@@ -85,23 +85,32 @@
   background-repeat: no-repeat;
 }
 
-.section-header
-{
-  margin: 0 auto;
-}
-
 #text-panel
 {
   position: relative;
   height: 30vw;
-  padding: 1vw;
+  /*padding: 1vw;*/
 }
 
 #text-panel>span
 {
   position: absolute;
-  width: 96%;
+  width: 100%;
   height: 100%;
-  margin: 0 auto;
   z-index: 200;
+}
+
+#text-panel>span>*
+{
+  width: 96%;
+}
+
+#text-panel>span>img
+{
+  height: 100%;
+}
+
+#contact-us
+{
+  background-image: url('../img/PS_2.png');
 }
