@@ -25,8 +25,9 @@ var measureElements = function(the_window)
   {
     project_divs[i].dims = {
       pos: $(project_divs[i]).offset().top,
-      height:  $(project_divs[i]).height()
+      height:  $(project_divs[i]).height(),
     };
+    console.log(`project_div[${i}] pos + height = ${(project_divs[i].dims.pos + project_divs[i].dims.height)}`);
   }
 
   team_divs = $('#gcs-team>.container>.row>div');
@@ -34,8 +35,9 @@ var measureElements = function(the_window)
   {
     team_divs[i].dims = {
       pos: $(team_divs[i]).offset().top,
-      height:  $(team_divs[i]).height()
+      height:  $(team_divs[i]).height(),
     };
+    console.log(`team_divs[${i}] pos + height = ${(team_divs[i].dims.pos + team_divs[i].dims.height)}`);
   }
 
   console.log("windowHeight" + windowHeight);
