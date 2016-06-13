@@ -8,6 +8,11 @@ var services_pos, services_height;
 var project_divs = [];
 var team_divs = [];
 
+/**
+ * measureElements
+ * Measures the dimensions of numerous elements on the page
+ *  and stores those measurements into variables. 
+ */
 var measureElements = function(the_window)
 {
   windowHeight = $(the_window).height();
@@ -47,6 +52,7 @@ $(window).scroll(function()
 {
   let windowScrollTop = $(this).scrollTop();
   let window_bottom = windowHeight + windowScrollTop;
+  console.log(`window bottom = ${window_bottom}`);
   // // console.log('bottom window position = ' + window_bottom);
 
   for (let i = 0; i <project_divs.length; i++)
