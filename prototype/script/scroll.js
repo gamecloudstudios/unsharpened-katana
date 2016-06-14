@@ -29,7 +29,7 @@ var measureElements = function(the_window)
       pos: $(project_divs[i]).offset().top,
       height:  $(project_divs[i]).height(),
     };
-    console.log(`project_div[${i}] pos + height = ${(project_divs[i].dims.pos + project_divs[i].dims.height)}`);
+    // console.log(`project_div[${i}] pos + height = ${(project_divs[i].dims.pos + project_divs[i].dims.height)}`);
   }
 
   team_divs = $('#gcs-team>.container>.row>div');
@@ -39,12 +39,12 @@ var measureElements = function(the_window)
       pos: $(team_divs[i]).offset().top,
       height:  $(team_divs[i]).height(),
     };
-    console.log(`team_divs[${i}] pos + height = ${(team_divs[i].dims.pos + team_divs[i].dims.height)}`);
+    // console.log(`team_divs[${i}] pos + height = ${(team_divs[i].dims.pos + team_divs[i].dims.height)}`);
   }
 
-  console.log("windowHeight" + windowHeight);
-  console.log("services_pos" + services_pos);
-  console.log("services_height" + services_height);
+  // console.log("windowHeight" + windowHeight);
+  // console.log("services_pos" + services_pos);
+  // console.log("services_height" + services_height);
 }
 
 $(window).resize(function()
@@ -80,18 +80,19 @@ $(window).scroll(function()
 {
   let windowScrollTop = $(this).scrollTop();
   let window_bottom = windowHeight + windowScrollTop;
-  console.log(`window bottom = ${window_bottom}`);
-  // // console.log('bottom window position = ' + window_bottom);
+  // console.log(`window bottom = ${window_bottom}`);
+  // console.log('bottom window position = ' + window_bottom);
 
   let windowScrollDelta = windowScrollTop - last_windowScrollTop;
 
   // BG Parallax Scrolling Effect
-  // $('#gallery').animate(
-  //   {
-  //     bottom: "+=" + (windowScrollDelta * .3) 
-  //   },
-  //   1
-  // )
+  $('#gcs-backgrounds').animate(
+    {
+      top: "-=" + (windowScrollDelta * .5) 
+    },
+    1
+  );
+  console.log('PARALLAX!!!!');
 
   if (windowScrollTop > 90)
   {
@@ -173,7 +174,7 @@ var growElement = function(element)
   $(element).addClass("grow-element");
   setTimeout(function()
   {
-    console.log("FULL SIZE!");
+    // console.log("FULL SIZE!");
     $(element).removeClass("no-size");
   }, 590);
 };

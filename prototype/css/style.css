@@ -143,7 +143,24 @@ body
   top: 0px;
   width: 100%;
   height: 100vh;
-  margin: 0 auto;
+  text-align: center;
+}
+
+#gcs-backgrounds
+{
+  position: fixed;
+  top: 0px;
+  width: 100%;  
+  overflow: hidden;
+}
+
+#gcs-backgrounds>img
+{
+  display: block;
+  position: relative;
+  min-width: 100vw;
+  max-height: 100vh;
+  margin: auto;
 }
 
 #gc-carousel
@@ -245,7 +262,8 @@ body
 #contact-us
 {
   /*background-image: url('../img/PS_2.png');*/
-  background: rgba(0,0,0, .6);
+  /*background: rgba(0,0,0, .6);*/
+  background: #272727;
 }
 
 #gcs-services .thumbnail
@@ -280,12 +298,11 @@ body
   /*background-image: url('../img/PS_3.png');*/
   background: #272727;
 }
-
 #gcs-portfolio .row>div
 {
-  margin: 0;
   padding: 0;
 }
+
 #gcs-portfolio .project-panel,
 #gcs-team .team-panel
 {  
@@ -323,7 +340,8 @@ body
 
 #gcs-portfolio .project-panel
 {
-  transition: all .5s;
+  /*transition: all .5s ease-in-out;*/
+  position: relative;
   border: none;
   padding: 0;
   overflow: hidden;
@@ -331,25 +349,29 @@ body
 
 #gcs-portfolio .project-panel>.tn-description
 {
-  transition: all .5s;
+  transition: all .5s ease-in-out;
   position: absolute;
+  top: -100%;
   background: rgba(0,0,0,.6);
-  opacity: 0;
+  /*opacity: 0;*/
   width: 100%;
   height: 100%;
+  visibility: hidden;
   /*transform: scale(0,0);*/
 }
 
 #gcs-portfolio .project-panel:hover>.tn-description
 {
-  opacity: 1;
+  top: 0%;
+  /*opacity: 1;*/
   z-index: 1;
+  visibility: visible;
   /*transform: scale(1,1);*/
 }
 
 #gcs-portfolio .project-panel>img
 {
-  transition: all .5s;
+  transition: all .5s ease-in-out;
   transform-origin: center;
   width: 100%;
   max-height: 100%;
@@ -372,7 +394,8 @@ body
 {
   min-height: 90vh;
   /*background-image: url('../img/PS_2.png');*/
-  background: #D1D1D1;
+  /*background: #D1D1D1;*/
+  background: rgba(0,0,0,.6);
 }
 
 /*#gcs-team .team-panel
@@ -402,10 +425,16 @@ body
 
 #gcs-team .team-panel h5
 {
+  transition-property: border;
+  transition-duration: .5s;
   border-bottom: 2px solid #BCBCBC;
+  padding-bottom: 3px;
   display: inline-flex;
 }
-
+#gcs-team .team-panel:hover h5
+{
+  border-bottom: 2px solid rgba(251,171,17, 1);
+}
 #gcs-team .team-panel>img
 {
   transition-property: border;
@@ -418,7 +447,7 @@ body
   max-height: 60%;
   overflow: hidden;
 }
-#gcs-team .team-panel>img:hover
+#gcs-team .team-panel:hover>img
 {
   border: 5px solid rgba(251,171,17, 1);
 }
