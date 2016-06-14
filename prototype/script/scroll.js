@@ -8,6 +8,7 @@ var windowHeight;
 var services_pos, services_height;
 var project_divs = [];
 var team_divs = [];
+var last_windowScrollTop = 0;
 
 /**
  * measureElements
@@ -51,12 +52,55 @@ $(window).resize(function()
   measureElements($(this));
 });
 
+
+$('#gcs-navbar a').on('click', function()
+{
+  let windowScrollTop = $(window).scrollTop();
+  let link_id = $(this).attr('href');
+  // console.log("navbar link clicked! " + link_id);
+
+  // Get the y-position of the div we're clicking for
+  let div_pos = $(link_id).offset().top;
+
+  scrollThisAmount(div_pos);
+
+  return false;   // Prevent propogation through DOM.
+});
+
+
+/**
+ * WINDOW SCROLL EVENT HANDLER
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
 $(window).scroll(function()
 {
   let windowScrollTop = $(this).scrollTop();
   let window_bottom = windowHeight + windowScrollTop;
   console.log(`window bottom = ${window_bottom}`);
   // // console.log('bottom window position = ' + window_bottom);
+
+  let windowScrollDelta = windowScrollTop - last_windowScrollTop;
+
+  // BG Parallax Scrolling Effect
+  // $('#gallery').animate(
+  //   {
+  //     bottom: "+=" + (windowScrollDelta * .3) 
+  //   },
+  //   1
+  // )
+
+  if (windowScrollTop > 90)
+  {
+    shrinkNavbar();
+  }
+  else
+  {
+    growNavbar();
+  }
 
   for (let i = 0; i <project_divs.length; i++)
   {
@@ -80,7 +124,7 @@ $(window).scroll(function()
     fadeInServices();
   }
 
-  
+  last_windowScrollTop = windowScrollTop;
 });
 
 var fadeInServices = function()
@@ -105,6 +149,13 @@ var fadeInServices = function()
     }, 
     'slow'
   );
+
+  $('#gcs-services .thumbnail:eq(3)').delay(2500).animate(
+    {
+      opacity: 1
+    }, 
+    'slow'
+  );
 };
 
 var showSpin = function(element)
@@ -115,7 +166,7 @@ var showSpin = function(element)
     // console.log("FULL SIZE!");
     $(element).removeClass("tiny-size");
   }, 690);
-}
+};
 
 var growElement = function(element)
 {
@@ -125,4 +176,37 @@ var growElement = function(element)
     console.log("FULL SIZE!");
     $(element).removeClass("no-size");
   }, 590);
-}
+};
+
+var shrinkNavbar = function()
+{
+  // setTimeout(function()
+  // {
+  //   $('.navbar').removeClass("original-navbar");
+  //   $('.navbar').addClass("shrunken-navbar");
+  // }, 595);
+  // $('.navbar').addClass("shrink-navbar");
+  // $('.navbar-brand>img').addClass("shrink-brand");
+};
+
+var growNavbar = function()
+{
+  // setTimeout(function()
+  // {
+  //   $('.navbar').addClass("original-navbar");
+  //   $('.navbar').removeClass("shrunken-navbar");
+  // }, 595);
+  // $('.navbar').removeClass("shrink-navbar");
+  // $('.navbar').addClass("grow-navbar");
+  // $('.navbar-brand>img').removeClass("shrink-brand");
+};
+
+var scrollThisAmount = function(amount)
+{
+  $('html, body').delay(200).animate(
+    {
+      scrollTop: amount - 90 // 90 is height of navbar
+    },
+    1000
+  );
+};
