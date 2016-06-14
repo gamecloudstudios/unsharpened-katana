@@ -22,7 +22,7 @@ var measureElements = function(the_window)
   services_pos = $('#gcs-services').offset().top;
   services_height = $('#gcs-services').height();
 
-  project_divs = $('#gcs-portfolio>.container>.row>div');
+  project_divs = $('#gcs-portfolio>.container-fluid>.row>div');
   for (let i = 0; i < project_divs.length; i++)
   {
     project_divs[i].dims = {
@@ -106,7 +106,7 @@ $(window).scroll(function()
   {
     if (window_bottom > project_divs[i].dims.pos + project_divs[i].dims.height)
     {
-      showSpin($(project_divs[i]).children('.thumbnail'));
+      showSpin($(project_divs[i]).children('.project-panel'));
     }
   }
 
@@ -210,3 +210,42 @@ var scrollThisAmount = function(amount)
     1000
   );
 };
+
+// $('#gcs-portfolio .project-panel').hover(
+//   // Mouse Enter function
+//   function() 
+//   {
+//     $(this).children('.tn-description').animate(
+//       {
+//         opacity: 1,
+//         'z-index': 1
+//       }, 
+//       500
+//     );
+//     // $(this).children('img').animate(
+//     //   {
+//     //     width: '120%',
+//     //     height: '120%'
+//     //   }, 
+//     //   500
+//     // );
+//   },
+//   // Mouse Leave function
+//   function()
+//   {
+//     $(this).children('.tn-description').animate(
+//       {
+//         opacity: 0,
+//         'z-index': 2
+//       }, 
+//       500
+//     );
+//     // $(this).children('img').animate(
+//     //   {
+//     //     width: '100%',
+//     //     height: '100%'
+//     //   }, 
+//     //   500
+//     // );
+//   }
+// );
