@@ -1,8 +1,18 @@
+body
+{
+  padding-top: 90px;
+}
+
+/*p
+{
+  color: #efefef;
+}*/
+
 #header
 {
-  width: 100%;
-  height: 90px;
+  width: 100%;  
   text-align: center;
+  transform-origin: top;
 }
 
 #header-container
@@ -17,8 +27,78 @@
   height: 100%;
 }*/
 
-.navbar-header, navbar-collapse
+.navbar
 {
+  transform-origin: top;  
+  /*background-color: #66DAFF;*/
+  background-color: #4C4C4C;
+  opacity: .95;
+}
+
+.original-navbar
+{
+  height: 90px;
+}
+
+.shrunken-navbar
+{
+  height: 54px;
+}
+
+.shrink-navbar
+{
+  animation-name: shrink-navbar;
+  animation-duration: .6s;
+}
+@keyframes shrink-navbar
+{
+  100%
+  {
+    transform: scaleY(.6);
+  }
+}
+
+.grow-navbar
+{
+  animation-name: grow-navbar;
+  animation-duration: .6s;
+}
+@keyframes grow-navbar
+{
+  100%
+  {
+    transform: scaleY(1 / .6);
+  }
+}
+
+.shrink-brand
+{
+  animation-name: shrink-brand;
+  animation-duration: .6s;
+}
+@keyframes shrink-brand
+{
+  100%
+  {
+    transform: scale(.4, .65);
+  }
+}
+.grow-brand
+{
+  animation-name: grow-brand;
+  animation-duration: .6s;
+}
+@keyframes grow-brand
+{
+  100%
+  {
+    transform: scale(1 / .4, 1 / .65);
+  }
+}
+
+
+.navbar-header, navbar-collapse
+{  
   height: 100%;
 }
 
@@ -40,21 +120,47 @@
 }
 
 .navbar-brand
-{
+{  
   /*width: 100%;*/
   height: 100%;
 }
 .navbar-brand>img
 {
+  transform-origin: left;
   max-width: 100%;
   max-height: 100%;
 }
 
+#gcs-splash, #gcs-about, #gcs-services, #gcs-portfolio, #gcs-team, #contact-us, #legal
+{
+  position: relative;
+  /*top: 90px;*/
+}
+
 #gallery
 {
+  position: fixed;
+  top: 0px;
   width: 100%;
-  height: 90vh;
-  margin: 0 auto;
+  height: 100vh;
+  text-align: center;
+}
+
+#gcs-backgrounds
+{
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  overflow: hidden;
+}
+
+#gcs-backgrounds>img
+{
+  display: block;
+  position: relative;
+  min-width: 100vw;
+  max-height: 100vh;
+  margin: auto;
 }
 
 #gc-carousel
@@ -75,6 +181,29 @@
   width: 100%;
   height: 100%;
 }
+.carousel-fade .carousel-inner .item {
+  opacity: 0;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+}
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
 
 .fill
 {
@@ -83,6 +212,37 @@
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.gcs-background
+{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: .95;
+  z-index: 2;
+}
+
+#gcs-splash
+{
+  min-height: 90vh;
+  background: rgba(0,0,0,.5);
+}
+
+#gcs-splash>.container
+{
+  min-height: 100%;
+}
+
+#gcs-splash .headlines
+{
+  margin-top: 22%;
+}
+
+#gcs-splash #splash-bullets
+{
+  position: relative;
+  top: 33vh;
 }
 
 #text-panel
@@ -112,7 +272,9 @@
 
 #contact-us
 {
-  background-image: url('../img/PS_2.png');
+  /*background-image: url('../img/PS_2.png');*/
+  /*background: rgba(0,0,0, .6);*/
+  background: #272727;
 }
 
 #gcs-services .thumbnail
@@ -122,23 +284,37 @@
 
 #gcs-about
 {
-  min-height: 90vh;
-  background-image: url('../img/PS_1.png');
+  /*min-height: 90vh;*/
+  /*background-image: url('../img/PS_1.png');  */
+  background: rgba(0,0,0,0.5);
+  /*background: rgba(141,221,247, .8);*/
+}
+
+#gcs-about p
+{
+  color: #D1D1D1;
 }
 
 #gcs-services
 {
   min-height: 90vh;
-  background-image: url('../img/PS_2.png');
+  /*background-image: url('../img/PS_2.png');*/
+  /*background-color: #FDAF0F;*/
+  background: rgba(251,171,17, 1);
 }
 
 #gcs-portfolio
 {
   min-height: 90vh;
-  background-image: url('../img/PS_3.png');
+  /*background-image: url('../img/PS_3.png');*/
+  background: #272727;
+}
+#gcs-portfolio .row>div
+{
+  padding: 0;
 }
 
-#gcs-portfolio .thumbnail,
+#gcs-portfolio .project-panel,
 #gcs-team .team-panel
 {  
   transform-origin: center;
@@ -173,34 +349,69 @@
   }*/
 }
 
-#gcs-portfolio .thumbnail
+#gcs-portfolio .project-panel
 {
+  /*transition: all .5s ease-in-out;*/
+  position: relative;
   border: none;
   padding: 0;
+  overflow: hidden;
 }
 
-#gcs-portfolio .thumbnail>img
+#gcs-portfolio .project-panel>.tn-description
 {
+  transition: all .5s ease-in-out;
+  position: absolute;
+  top: -100%;
+  background: rgba(0,0,0,.6);
+  opacity: 1;
+  /*z-index: 1;*/
+  width: 100%;
+  height: 100%;
+  /*visibility: hidden;*/
+  text-align: center;
+  /*transform: scale(0,0);*/
+}
+
+#gcs-portfolio .project-panel:hover>.tn-description
+{
+  top: 0%;
+  /*opacity: 1;*/
+  /*z-index: 1;*/
+  /*visibility: visible;*/
+  /*transform: scale(1,1);*/
+}
+
+#gcs-portfolio .project-panel>img
+{
+  transition: all .5s ease-in-out;
+  transform-origin: center;
   width: 100%;
   max-height: 100%;
+}
+
+#gcs-portfolio .project-panel:hover>img
+{
+  transform: scale(1.2, 1.2);
+  /*z-index: 2;*/
 }
 
 #gcs-team
 {
   min-height: 90vh;
-  background-image: url('../img/PS_2.png');
+  /*background-image: url('../img/PS_2.png');*/
+  /*background: #D1D1D1;*/
+  background: rgba(0,0,0,.6);
 }
 
-#gcs-team .team-panel
+/*#gcs-team .team-panel
 {
-  /*display: inline-flex;*/
-  /*border: 1px solid black;*/
   background-color: white;
   border-radius: 30px;
   width: 100%;
   max-height: 100%;
   overflow: hidden;
-}
+}*/
 
 /*#gcs-team .team-panel:hover
 {
@@ -213,18 +424,44 @@
   transform: scale(0, 0);
 }
 
+#gcs-team .row
+{
+  max-height: 30%; 
+}
+
+#gcs-team .team-panel h5
+{
+  transition-property: border;
+  transition-duration: .5s;
+  border-bottom: 2px solid #BCBCBC;
+  padding-bottom: 3px;
+  display: inline-flex;
+}
+#gcs-team .team-panel:hover h5
+{
+  border-bottom: 2px solid rgba(251,171,17, 1);
+}
 #gcs-team .team-panel>img
 {
-  /*display: block;*/
-  width: 50%;
-  float: left;
-  height: auto;
+  transition-property: border;
+  transition-duration: .5s;
+  border: 5px solid black;
+  border-radius: 50%;
+  display: block;
+  width: 60%;
+  /*float: left;*/
+  max-height: 60%;
+  overflow: hidden;
+}
+#gcs-team .team-panel:hover>img
+{
+  border: 5px solid rgba(251,171,17, 1);
 }
 #gcs-team .team-panel>span
 {
   padding: .5vw;
-  width: 50%;
-  float: left;
+  width: 100%;
+  /*float: left;*/
   height: auto;
 }
 .grow-element
@@ -242,3 +479,9 @@
   }
 }
 
+
+
+.legal
+{
+  background: rgba(0,0,0,.9);
+}
