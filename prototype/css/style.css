@@ -150,7 +150,7 @@ body
 {
   position: fixed;
   top: 0px;
-  width: 100%;  
+  width: 100%;
   overflow: hidden;
 }
 
@@ -229,9 +229,20 @@ body
   background: rgba(0,0,0,.5);
 }
 
+#gcs-splash>.container
+{
+  min-height: 100%;
+}
+
 #gcs-splash .headlines
 {
   margin-top: 22%;
+}
+
+#gcs-splash #splash-bullets
+{
+  position: relative;
+  top: 33vh;
 }
 
 #text-panel
@@ -353,10 +364,12 @@ body
   position: absolute;
   top: -100%;
   background: rgba(0,0,0,.6);
-  /*opacity: 0;*/
+  opacity: 1;
+  /*z-index: 1;*/
   width: 100%;
   height: 100%;
-  visibility: hidden;
+  /*visibility: hidden;*/
+  text-align: center;
   /*transform: scale(0,0);*/
 }
 
@@ -364,8 +377,8 @@ body
 {
   top: 0%;
   /*opacity: 1;*/
-  z-index: 1;
-  visibility: visible;
+  /*z-index: 1;*/
+  /*visibility: visible;*/
   /*transform: scale(1,1);*/
 }
 
@@ -380,14 +393,7 @@ body
 #gcs-portfolio .project-panel:hover>img
 {
   transform: scale(1.2, 1.2);
-}
-.thumbnail-description-hover
-{
-
-}
-.thumbnail-img-hover
-{
-  transform: scale(1.2,1.2);
+  /*z-index: 2;*/
 }
 
 #gcs-team
