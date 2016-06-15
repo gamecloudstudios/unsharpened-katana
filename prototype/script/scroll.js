@@ -2,8 +2,24 @@
 $(window).load(function()
 {
   measureElements($(window));
+
+  carousel = new Carousel(client_arr, 3, 2);
+  carousel.setDomArr(0);
+  console.log("HELLO WORLD");
 });
 
+var client_arr = [
+  'img/carousel/client01.png',
+  'img/carousel/client02.png',
+  'img/carousel/client03.png',
+  'img/carousel/client04.png',
+  'img/carousel/client05.png',
+  'img/carousel/client06.png',
+  'img/carousel/client07.png',
+  'img/carousel/client08.png',
+  'img/carousel/client09.png'
+];
+var carousel;
 var windowHeight;
 var services_pos, services_height;
 var project_divs = [];
