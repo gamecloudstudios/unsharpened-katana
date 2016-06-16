@@ -479,7 +479,28 @@ body
   }
 }
 
+#gcs-clients
+{
+  height: 40vh;
+}
 
+.left_translate
+{
+  transform: translateX(25%);
+  transition-duration: 1000ms;
+}
+
+.right_translate
+{
+  transform: translateX(-25%);
+  transition-duration: 1000ms;
+}
+
+.middle_translate
+{
+  transform: translateX(0);
+  transition-duration: 0;
+}
 
 .legal
 {
