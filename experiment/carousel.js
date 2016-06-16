@@ -13,9 +13,8 @@ var client_arr = [
 
 $(window).load(function()
 {
-  carousel = new Carousel(client_arr, 3, 2);
+  carousel = new Carousel('#gcs-clients', client_arr, 3, 2);
   carousel.createCarouselDOM();
-
   $('.button-back').click(function()
   {
       carousel.slideCarouselBack();
@@ -26,8 +25,10 @@ $(window).load(function()
   });
 });
 
-function Carousel(_src_arr, _num_visible, _num_slide)
+function Carousel(_host, _src_arr, _num_visible, _num_slide)
 {
+  var self = this;
+
   // Array of all elements used in the carousel
   var src_arr = _src_arr;
   // Number of elements that will be visible in the carousel
@@ -44,6 +45,9 @@ function Carousel(_src_arr, _num_visible, _num_slide)
   var dom_arr = []; 
 
   var first_visible = 0;
+
+  var auto_slide = true;
+  var auto_slide_interval = null;
 
   var carousel_container_css = {
     position: 'absolute',
@@ -147,8 +151,9 @@ function Carousel(_src_arr, _num_visible, _num_slide)
 
     carousel_div.append(carousel_left_div, carousel_middle_div, carousel_right_div);
 
-    $('#gcs-clients').append(carousel_container);
+    $(_host).append(carousel_container);
     setCarouselImages(first_visible);
+    setCarouselAutoSlide(auto_slide);
   };
 
   var setCarouselImages = function(_first_visible)
@@ -233,6 +238,21 @@ function Carousel(_src_arr, _num_visible, _num_slide)
       setCarouselImages(first_visible);
       $('.custom-carousel').removeClass('right_translate');  
     }, 1000);
+  };
+
+  var setCarouselAutoSlide = function(set_auto)
+  {
+    if (set_auto)
+    {
+      auto_slide_interval = setInterval(function()
+      {
+        self.slideCarouselForward();
+      }, 3000);
+    }
+    else
+    {
+      clearInterval(auto_slide_interval);
+    }
   };
 }
 
