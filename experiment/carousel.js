@@ -13,7 +13,7 @@ var client_arr = [
 
 $(window).load(function()
 {
-  carousel = new Carousel('#gcs-clients', client_arr, 4, 1);
+  carousel = new Carousel('#gcs-clients', client_arr, 3, 2);
   carousel.createCarouselDOM();
   $('.button-back').click(function()
   {
@@ -51,12 +51,12 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
 
   var carousel_container_css = {
     position: 'absolute',
-    width: '80vw',
+    width: '60vw',
     height: '10vw',
     left: '0',          // Used for centering
     right: '0',         // absolutely-positioned
     margin: '0 auto',   // container to the parent.
-    clip: 'rect(0, 80vw, 10vw, 0)',
+    clip: 'rect(0, 60vw, 10vw, 0)',
     overflow: 'hidden'
   };
 
@@ -66,7 +66,7 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
   };
 
   var carousel_left_css = {
-    // background: 'red',
+    background: 'red',
     position: 'absolute',    
     width: '' + (num_slide / num_visible * 100) + '%',
     height: '100%',
@@ -74,14 +74,14 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
   };
 
   var carousel_middle_css = {
-    // background: 'green',
+    background: 'green',
     position: 'absolute',    
     width: '100%',
     height: '100%',
   };
 
   var carousel_right_css = {
-    // background: 'blue',
+    background: 'blue',
     position: 'absolute',    
     width: '' + (num_slide / num_visible * 100) + '%',
     height: '100%',
@@ -101,16 +101,6 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
     float: 'left',
     'text-align': 'center'
   };
-
-  // var left_translate = {
-  //   transform: 'translateX(' + (num_slide / num_visible) + '%)',
-  //   'transition-duration': '1000ms'
-  // };
-
-  // var right_translate = {
-  //   transform: 'translateX(-' + (num_slide / num_visible) + '%)',
-  //   'transition-duration': '1000ms'
-  // };
 
   this.createCarouselDOM = function()
   { 
