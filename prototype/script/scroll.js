@@ -12,6 +12,10 @@ var team_divs = [];
 var last_windowScrollTop = 0;
 var splash_opacity = 1.0;
 
+var team_members_visible = false;
+var projects_visible = false;
+var services_visible = false;
+
 /**
  * measureElements
  * Measures the dimensions of numerous elements on the page
@@ -30,7 +34,7 @@ var measureElements = function(the_window)
   for (let i = 0; i < length; i++)
   {
     let img_w = bgs[i].clientWidth;
-    console.log((windowWidth - img_w) / 2);
+    // console.log((windowWidth - img_w) / 2);
     // let img_css = {}
     $(bgs[i]).css(
       {
@@ -49,7 +53,8 @@ var measureElements = function(the_window)
       pos: $(project_divs[i]).offset().top,
       height:  $(project_divs[i]).height(),
     };
-    // console.log(`project_div[${i}] pos + height = ${(project_divs[i].dims.pos + project_divs[i].dims.height)}`);
+    project_divs[i].visible = false;
+    // console.log(`project_div[${i}] pos + height = ${(project_divs[i].dims.pos + project_divs[i].dims.height)} and visible = ${project_divs[i].visible}`);
   }
 
   team_divs = $('#gcs-team>.container>.row>div');
@@ -59,6 +64,7 @@ var measureElements = function(the_window)
       pos: $(team_divs[i]).offset().top,
       height:  $(team_divs[i]).height(),
     };
+    team_divs[i].visible = false;
     // console.log(`team_divs[${i}] pos + height = ${(team_divs[i].dims.pos + team_divs[i].dims.height)}`);
   }
 
@@ -110,7 +116,7 @@ $(window).scroll(function()
   // BG Parallax Scrolling Effect
   $('#gcs-backgrounds').animate(
     {
-      top: "-=" + (windowScrollDelta * .5) 
+      top: "-=" + (windowScrollDelta * .3) 
     },
     1
   );
@@ -132,25 +138,53 @@ $(window).scroll(function()
     $('#gcs-splash>.container').hide();
   }
 
-  for (let i = 0; i <project_divs.length; i++)
+  if (!projects_visible)
   {
-    if (window_bottom > project_divs[i].dims.pos + project_divs[i].dims.height)
+    for (let i = 0; i <project_divs.length; i++)
     {
-      showSpin($(project_divs[i]).children('.project-panel'));
+      if (window_bottom > project_divs[i].dims.pos + project_divs[i].dims.height)
+      {
+        project_divs[i].visible = true;
+        showSpin($(project_divs[i]).children('.project-panel'));
+      }
     }
-  }
-
-  for (let i = 0; i <team_divs.length; i++)
-  {
-    if (window_bottom > team_divs[i].dims.pos + team_divs[i].dims.height)
+    let visible_arr = project_divs.filter(function()
     {
-      growElement($(team_divs[i]).children('.team-panel'));
-    }
+      // console.log('project_div.visible: ' + project_div.visible);
+      return this.visible;
+    });
+    projects_visible = visible_arr.length == project_divs.length;
   }
+  // else
+  //   console.log("All projects visible!");
+  
 
-  if (window_bottom > services_pos + (services_height >> 2))
+  if (!team_members_visible)
   {
-    console.log("FADE IN!");
+    for (let i = 0; i < team_divs.length; i++)
+    {
+      // console.log(`team_divs[${i}].visible = ${team_divs[i].visible}`);
+      if (window_bottom > team_divs[i].dims.pos + team_divs[i].dims.height)
+      {
+        team_divs[i].visible = true;
+        growElement($(team_divs[i]).children('.team-panel'));
+      }
+    }
+    var team_visible_arr = [];
+    team_visible_arr = team_divs.filter(function()
+    {
+      return this.visible;
+    });
+    team_members_visible = team_visible_arr.length == team_divs.length;
+    // console.log("visible array: " + visible_arr);
+  }
+  // else
+  //   console.log("All team members visible!");
+
+  if (!services_visible && (window_bottom > services_pos + (services_height >> 2)))
+  {
+    // console.log("FADE IN!");
+    services_visible = true;
     fadeInServices();
   }
 
