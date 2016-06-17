@@ -34,11 +34,11 @@ var measureElements = function(the_window)
     // let img_css = {}
     $(bgs[i]).css(
       {
-        'margin-left': '' + (img_w <= windowWidth ? 0 : (windowWidth - img_w) / 2) + 'px'
+        'margin-left': '' + ((windowWidth - img_w) / 2) + 'px'
       }
     );
   }
-  
+
   services_pos = $('#gcs-services').offset().top;
   services_height = $('#gcs-services').height();
 
