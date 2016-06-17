@@ -1,6 +1,6 @@
 body
 {
-  padding-top: 90px;
+  /*padding-top: 90px;*/
 }
 
 /*p
@@ -30,19 +30,23 @@ body
 .navbar
 {
   transform-origin: top;  
-  /*background-color: #66DAFF;*/
-  background-color: #4C4C4C;
-  opacity: .95;
+  /*background-color: #66DAFF;*/    
 }
 
 .original-navbar
 {
-  height: 90px;
+  padding-top: 3em;
+  background: rgba(0,0,0,0);
+  transform: translateY(0);
+  transition: transform 0.5s, background 0.5s;
+  border-bottom: none;
+  /*height: 90px;*/
 }
 
 .shrunken-navbar
 {
-  height: 54px;
+  background: rgba(76,76,76,.95);
+  transform: translateY(-3em);
 }
 
 .shrink-navbar
@@ -131,7 +135,7 @@ body
   max-height: 100%;
 }
 
-#gcs-splash, #gcs-about, #gcs-services, #gcs-portfolio, #gcs-team, #contact-us, #legal
+#gcs-splash, #gcs-about, #gcs-services, #gcs-portfolio, #gcs-team, #gcs-clients, #contact-us, #legal
 {
   position: relative;
   /*top: 90px;*/
@@ -148,6 +152,7 @@ body
 
 #gcs-backgrounds
 {
+  text-align: center;
   position: fixed;
   top: 0px;
   width: 100%;
@@ -225,25 +230,30 @@ body
 
 #gcs-splash
 {
-  min-height: 90vh;
+  min-height: 100vh;
   background: rgba(0,0,0,.5);
 }
-
 #gcs-splash>.container
 {
-  min-height: 100%;
+  text-align: center;
+}
+#gcs-splash>.container>.headlines
+{
+  position: fixed;
+ 	top: 30%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+#gcs-splash>.container>#splash-bullets
+{
+  position: fixed;
+ 	top: 80%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 }
 
-#gcs-splash .headlines
-{
-  margin-top: 22%;
-}
-
-#gcs-splash #splash-bullets
-{
-  position: relative;
-  top: 33vh;
-}
 
 #text-panel
 {
@@ -270,17 +280,7 @@ body
   height: 100%;
 }
 
-#contact-us
-{
-  /*background-image: url('../img/PS_2.png');*/
-  /*background: rgba(0,0,0, .6);*/
-  background: #272727;
-}
 
-#gcs-services .thumbnail
-{
-  opacity: 0;
-}
 
 #gcs-about
 {
@@ -300,9 +300,27 @@ body
   min-height: 90vh;
   /*background-image: url('../img/PS_2.png');*/
   /*background-color: #FDAF0F;*/
-  background: rgba(251,171,17, 1);
+  background: rgba(251,156,2, 1);
 }
-
+#gcs-services h3, #gcs-services p
+{
+  color: black;
+}
+#gcs-services .service-tile
+{
+  opacity: 0;
+}
+#gcs-services .service-tile>.img-container
+{
+  width: 100%;
+  text-align: center;
+}
+#gcs-services .service-tile>.img-container>img
+{
+  border-radius: 50%;
+  width: 60%;
+  max-height: 100%;
+}
 #gcs-portfolio
 {
   min-height: 90vh;
@@ -481,10 +499,27 @@ body
 
 #gcs-clients
 {
-  height: 40vh;
+  min-height: 40vh;
+  background: rgba(216,212,213,1);
+}
+#gcs-clients>.row
+{
+  text-align: center;
+}
+#gcs-clients h3
+{
+  color: black;
+  border-bottom: 2px solid black;
+  padding-bottom: 1vh;
+  display: inline-flex;
 }
 
-.left_translate
+#gcs-clients p
+{
+  color: black;
+}
+
+/*.left_translate
 {
   transform: translateX(25%);
   transition-duration: 1000ms;
@@ -500,6 +535,13 @@ body
 {
   transform: translateX(0);
   transition-duration: 0;
+}*/
+
+#contact-us
+{
+  /*background-image: url('../img/PS_2.png');*/
+  /*background: rgba(0,0,0, .6);*/
+  background: rgba(0,0,0,.9);
 }
 
 .legal
