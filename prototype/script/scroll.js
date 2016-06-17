@@ -5,10 +5,12 @@ $(window).load(function()
 });
 
 var windowHeight;
+var windowWidth;
 var services_pos, services_height;
 var project_divs = [];
 var team_divs = [];
 var last_windowScrollTop = 0;
+var splash_opacity = 1.0;
 
 /**
  * measureElements
@@ -18,7 +20,25 @@ var last_windowScrollTop = 0;
 var measureElements = function(the_window)
 {
   windowHeight = $(the_window).height();
+  windowWidth = $(the_window).width();
 
+  // Center the BG images
+  let bgs = $('#gcs-backgrounds').children('img');
+  // console.log(windowWidth);
+  // console.log(windowHeight);
+  let length = bgs.length;
+  for (let i = 0; i < length; i++)
+  {
+    let img_w = bgs[i].clientWidth;
+    console.log((windowWidth - img_w) / 2);
+    // let img_css = {}
+    $(bgs[i]).css(
+      {
+        'margin-left': '' + (img_w <= windowWidth ? 0 : (windowWidth - img_w) / 2) + 'px'
+      }
+    );
+  }
+  
   services_pos = $('#gcs-services').offset().top;
   services_height = $('#gcs-services').height();
 
@@ -50,6 +70,8 @@ var measureElements = function(the_window)
 $(window).resize(function()
 {
   measureElements($(this));
+
+  
 });
 
 
@@ -92,15 +114,22 @@ $(window).scroll(function()
     },
     1
   );
-  console.log('PARALLAX!!!!');
+  // console.log('PARALLAX!!!!');
 
-  if (windowScrollTop > 90)
+  // Transforming the menu navbar
+  windowScrollTop > windowHeight * .75 ? $('.navbar').addClass('shrunken-navbar') : $('.navbar').removeClass('shrunken-navbar');
+
+  // Fading away the contents in the splash section
+  splash_opacity = (windowHeight - windowScrollTop) / windowHeight;
+  // console.log('splash_opacity = ' + splash_opacity);
+  if (splash_opacity >= 0)
   {
-    shrinkNavbar();
+    $('#gcs-splash>.container').show();
+    $('#gcs-splash>.container').fadeTo(1, splash_opacity,"linear");
   }
   else
   {
-    growNavbar();
+    $('#gcs-splash>.container').hide();
   }
 
   for (let i = 0; i <project_divs.length; i++)
@@ -121,7 +150,7 @@ $(window).scroll(function()
 
   if (window_bottom > services_pos + (services_height >> 2))
   {
-    // console.log("FADE IN!");
+    console.log("FADE IN!");
     fadeInServices();
   }
 
@@ -130,28 +159,28 @@ $(window).scroll(function()
 
 var fadeInServices = function()
 {
-  $('#gcs-services .thumbnail:eq(0)').delay(250).animate(
+  $('#gcs-services .service-tile:eq(0)').delay(250).animate(
     {
       opacity: 1
     }, 
     'slow'
   );
 
-  $('#gcs-services .thumbnail:eq(1)').delay(1000).animate(
+  $('#gcs-services .service-tile:eq(1)').delay(1000).animate(
     {
       opacity: 1
     }, 
     'slow'
   );
 
-  $('#gcs-services .thumbnail:eq(2)').delay(1750).animate(
+  $('#gcs-services .service-tile:eq(2)').delay(1750).animate(
     {
       opacity: 1
     }, 
     'slow'
   );
 
-  $('#gcs-services .thumbnail:eq(3)').delay(2500).animate(
+  $('#gcs-services .service-tile:eq(3)').delay(2500).animate(
     {
       opacity: 1
     }, 
@@ -179,28 +208,6 @@ var growElement = function(element)
   }, 590);
 };
 
-var shrinkNavbar = function()
-{
-  // setTimeout(function()
-  // {
-  //   $('.navbar').removeClass("original-navbar");
-  //   $('.navbar').addClass("shrunken-navbar");
-  // }, 595);
-  // $('.navbar').addClass("shrink-navbar");
-  // $('.navbar-brand>img').addClass("shrink-brand");
-};
-
-var growNavbar = function()
-{
-  // setTimeout(function()
-  // {
-  //   $('.navbar').addClass("original-navbar");
-  //   $('.navbar').removeClass("shrunken-navbar");
-  // }, 595);
-  // $('.navbar').removeClass("shrink-navbar");
-  // $('.navbar').addClass("grow-navbar");
-  // $('.navbar-brand>img').removeClass("shrink-brand");
-};
 
 var scrollThisAmount = function(amount)
 {
@@ -211,42 +218,3 @@ var scrollThisAmount = function(amount)
     1000
   );
 };
-
-// $('#gcs-portfolio .project-panel').hover(
-//   // Mouse Enter function
-//   function() 
-//   {
-//     $(this).children('.tn-description').animate(
-//       {
-//         opacity: 1,
-//         'z-index': 1
-//       }, 
-//       500
-//     );
-//     // $(this).children('img').animate(
-//     //   {
-//     //     width: '120%',
-//     //     height: '120%'
-//     //   }, 
-//     //   500
-//     // );
-//   },
-//   // Mouse Leave function
-//   function()
-//   {
-//     $(this).children('.tn-description').animate(
-//       {
-//         opacity: 0,
-//         'z-index': 2
-//       }, 
-//       500
-//     );
-//     // $(this).children('img').animate(
-//     //   {
-//     //     width: '100%',
-//     //     height: '100%'
-//     //   }, 
-//     //   500
-//     // );
-//   }
-// );
