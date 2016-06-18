@@ -135,7 +135,7 @@ body
   max-height: 100%;
 }
 
-#gcs-splash, #gcs-about, #gcs-services, #gcs-portfolio, #gcs-team, #gcs-clients, #contact-us, #legal
+#gcs-splash, #gcs-about, #gcs-services, #gcs-portfolio, #gcs-team, #gcs-clients, #gcs-testimonials, #contact-us, #legal
 {
   position: relative;
   /*top: 90px;*/
@@ -219,14 +219,14 @@ body
   background-repeat: no-repeat;
 }
 
-.gcs-background
+/*.gcs-background
 {
   position: absolute;
   width: 100%;
   height: 100%;
   opacity: .95;
   z-index: 2;
-}
+}*/
 
 #gcs-splash
 {
@@ -495,6 +495,41 @@ body
   {
     transform: scale(1.0, 1.0);
   }
+}
+
+#gcs-testimonials
+{
+  /*min-height: 60vh;*/
+  background: rgba(100,100,100,1);
+}
+#gcs-testimonials p
+{
+  color: white;
+}
+#gcs-testimonials>.carousel-container
+{
+  padding: 0 0 0 0;
+}
+#gcs-testimonials>.container-fluid>#carousel-testimonials
+{
+  /*min-height: 60vh;*/
+  /*background: rgba(100,100,100,1);*/
+  padding: 6vh 0;
+}
+#gcs-testimonials>.container-fluid>#carousel-testimonials>.carousel-inner
+{
+  
+  /*height: 90%;*/
+}
+#gcs-testimonials>.container>#carousel-testimonials .item
+{
+  /*height: 100%;*/
+}
+#gcs-testimonials .test-pic>img
+{
+  border-radius: 50%;
+  width: 40%;
+  max-height: 40%;
 }
 
 #gcs-clients
