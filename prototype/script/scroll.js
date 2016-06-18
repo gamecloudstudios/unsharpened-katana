@@ -4,12 +4,20 @@ $(window).load(function()
   measureElements($(window));
 });
 
+var bg_arr = [
+  'img/SHOWSTOPPER PAGE_v1.jpg',
+  'img/PS_4.jpg',
+  'img/GC CLOUD HEADER_v1.jpg'
+];
+var bg_arr_index = 0;
+
 var windowHeight;
 var windowWidth;
 var services_pos, services_height;
+var about_pos, team_pos;
 var project_divs = [];
 var team_divs = [];
-var last_windowScrollTop = 0;
+// var last_windowScrollTop = 0;
 var splash_opacity = 1.0;
 
 var team_members_visible = false;
@@ -46,6 +54,9 @@ var measureElements = function(the_window)
   services_pos = $('#gcs-services').offset().top;
   services_height = $('#gcs-services').height();
 
+  about_pos = $('#gcs-about').offset().top;
+  team_pos = $('#gcs-team').offset().top;
+
   project_divs = $('#gcs-portfolio>.container-fluid>.row>div');
   for (let i = 0; i < project_divs.length; i++)
   {
@@ -71,6 +82,7 @@ var measureElements = function(the_window)
   // console.log("windowHeight" + windowHeight);
   // console.log("services_pos" + services_pos);
   // console.log("services_height" + services_height);
+  determineBackground(windowHeight + $(window).scrollTop());
 }
 
 $(window).resize(function()
@@ -111,16 +123,17 @@ $(window).scroll(function()
   // console.log(`window bottom = ${window_bottom}`);
   // console.log('bottom window position = ' + window_bottom);
 
-  let windowScrollDelta = windowScrollTop - last_windowScrollTop;
+  // let windowScrollDelta = windowScrollTop - last_windowScrollTop;
 
   // BG Parallax Scrolling Effect
-  $('#gcs-backgrounds').animate(
-    {
-      top: "-=" + (windowScrollDelta * .3) 
-    },
-    1
-  );
+  // $('#gcs-backgrounds').animate(
+  //   {
+  //     top: "-=" + (windowScrollDelta * .3) 
+  //   },
+  //   1
+  // );
   // console.log('PARALLAX!!!!');
+  determineBackground(window_bottom);
 
   // Transforming the menu navbar
   windowScrollTop > windowHeight * .75 ? $('.navbar').addClass('shrunken-navbar') : $('.navbar').removeClass('shrunken-navbar');
@@ -188,7 +201,7 @@ $(window).scroll(function()
     fadeInServices();
   }
 
-  last_windowScrollTop = windowScrollTop;
+  // last_windowScrollTop = windowScrollTop;
 });
 
 var fadeInServices = function()
@@ -251,4 +264,33 @@ var scrollThisAmount = function(amount)
     },
     1000
   );
+};
+
+var determineBackground = function(scroll_pos)
+{
+  var new_bg_arr_index = -1;
+  // var bg_img_elem = $('#gcs-backgrounds>img');
+
+  if (scroll_pos < about_pos)
+  {
+    new_bg_arr_index = 0;
+  }
+  else if (scroll_pos >= about_pos && scroll_pos < team_pos)
+  {
+    new_bg_arr_index = 1;
+  }
+  else
+  {
+    new_bg_arr_index = 2;
+  }
+
+  if (new_bg_arr_index !== bg_arr_index)
+  {
+    bg_arr_index = new_bg_arr_index;
+    $('#gcs-backgrounds').css(
+      {
+        transform: `translateY(-${100 * bg_arr_index}vh)`
+      }
+    );
+  }
 };
