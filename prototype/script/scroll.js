@@ -281,7 +281,7 @@ var scrollThisAmount = function(amount)
 {
   $('html, body').delay(200).animate(
     {
-      scrollTop: amount - 90 // 90 is height of navbar
+      scrollTop: amount - 75 // 90 is height of navbar
     },
     1000
   );
