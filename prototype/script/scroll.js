@@ -1,7 +1,7 @@
 //document.addEventListener("DOMContentLoaded", function(event)
 $(window).load(function()
 {
-  measureElements($(window));
+  measureElements($(this));
 });
 
 var bg_arr = [
@@ -23,6 +23,8 @@ var splash_opacity = 1.0;
 var team_members_visible = false;
 var projects_visible = false;
 var services_visible = false;
+// var bgs_initialized = false;
+// var bgs = [];
 
 /**
  * measureElements
@@ -35,18 +37,35 @@ var measureElements = function(the_window)
   windowWidth = $(the_window).width();
 
   // Center the BG images
-  let bgs = $('#gcs-backgrounds').children('img');
+  // if (!bgs_initialized)
+  let bgs = $('#gcs-backgrounds>.img-container').children('img');
   // console.log(windowWidth);
   // console.log(windowHeight);
   let length = bgs.length;
   for (let i = 0; i < length; i++)
   {
+    // if (!bgs_initialized)
     let img_w = bgs[i].clientWidth;
+    let img_h = bgs[i].clientHeight;
+    // let img_ar = img_w / img_h;
+    let nat_ar = bgs[i].naturalWidth / bgs[i].naturalHeight;
+    let win_ar = windowWidth / windowHeight;
+    
+
+    // measured_bgs_natural_wh = true;
     // console.log((windowWidth - img_w) / 2);
+    if (i == 0)
+      console.log(`IMAGE[${i}]: img_w = ${img_w}, img_h = ${img_h}, nat_w = ${bgs[i].naturalWidth}, nat_h = ${bgs[i].naturalHeight}`);
     // let img_css = {}
+    // Measuring the background image stylings
+    // 1) window's aspect ratio (AR) < image's natural AR -- image height is 100% and confined to viewport, image width is calculated using image height and natural AR and is centered.
+    // 2) window's AR >= image's natural AR -- image width is 100% and confined to the viewport. image height is calculated using image width and natural AR and is centered.
     $(bgs[i]).css(
       {
-        'margin-left': '' + (img_w <= windowWidth ? 0 : (windowWidth - img_w) / 2) + 'px'
+        'width': `${win_ar >= nat_ar ? 100 : windowHeight * nat_ar / windowWidth * 100}%`,
+        'margin-left': `${win_ar >= nat_ar ? 0 : (windowWidth - img_w) / 2}px`,
+        'height': `${win_ar < nat_ar ? 100 : windowWidth / nat_ar / windowHeight * 100}%`,
+        'margin-top': `${win_ar < nat_ar ? 0 : (windowHeight - img_h) / 2}px`
       }
     );
   }
@@ -200,6 +219,8 @@ $(window).scroll(function()
     services_visible = true;
     fadeInServices();
   }
+  // else
+  //   console.log("All services visible!");
 
   // last_windowScrollTop = windowScrollTop;
 });
