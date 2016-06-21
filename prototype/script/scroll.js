@@ -39,8 +39,8 @@ var measureElements = function(the_window)
   // Center the BG images
   // if (!bgs_initialized)
   let bgs = $('#gcs-backgrounds>.img-container').children('img');
-  // console.log(windowWidth);
-  // console.log(windowHeight);
+  // debugPrint(windowWidth);
+  // debugPrint(windowHeight);
   let length = bgs.length;
   for (let i = 0; i < length; i++)
   {
@@ -53,9 +53,9 @@ var measureElements = function(the_window)
     
 
     // measured_bgs_natural_wh = true;
-    // console.log((windowWidth - img_w) / 2);
-    if (i == 0)
-      console.log(`IMAGE[${i}]: img_w = ${img_w}, img_h = ${img_h}, nat_w = ${bgs[i].naturalWidth}, nat_h = ${bgs[i].naturalHeight}`);
+    // debugPrint((windowWidth - img_w) / 2);
+    // if (i == 0)
+      // debugPrint(`IMAGE[${i}]: img_w = ${img_w}, img_h = ${img_h}, nat_w = ${bgs[i].naturalWidth}, nat_h = ${bgs[i].naturalHeight}`);
     // let img_css = {}
     // Measuring the background image stylings
     // 1) window's aspect ratio (AR) < image's natural AR -- image height is 100% and confined to viewport, image width is calculated using image height and natural AR and is centered.
@@ -65,7 +65,7 @@ var measureElements = function(the_window)
         'width': `${win_ar >= nat_ar ? 100 : windowHeight * nat_ar / windowWidth * 100}%`,
         'margin-left': `${win_ar >= nat_ar ? 0 : (windowWidth - img_w) / 2}px`,
         'height': `${win_ar < nat_ar ? 100 : windowWidth / nat_ar / windowHeight * 100}%`,
-        'margin-top': `${win_ar < nat_ar ? 0 : (windowHeight - img_h) / 2}px`
+        'margin-top': `0`//${win_ar < nat_ar ? 0 : (windowHeight - img_h) / 2}px`
       }
     );
   }
@@ -84,7 +84,7 @@ var measureElements = function(the_window)
       height:  $(project_divs[i]).height(),
     };
     project_divs[i].visible = false;
-    // console.log(`project_div[${i}] pos + height = ${(project_divs[i].dims.pos + project_divs[i].dims.height)} and visible = ${project_divs[i].visible}`);
+    debugPrint(`project_div[${i}] pos + height = ${(project_divs[i].dims.pos + project_divs[i].dims.height)} and visible = ${project_divs[i].visible}`);
   }
 
   team_divs = $('#gcs-team>.container>.row>div');
@@ -95,12 +95,12 @@ var measureElements = function(the_window)
       height:  $(team_divs[i]).height(),
     };
     team_divs[i].visible = false;
-    // console.log(`team_divs[${i}] pos + height = ${(team_divs[i].dims.pos + team_divs[i].dims.height)}`);
+    debugPrint(`team_divs[${i}] pos + height = ${(team_divs[i].dims.pos + team_divs[i].dims.height)}`);
   }
 
-  // console.log("windowHeight" + windowHeight);
-  // console.log("services_pos" + services_pos);
-  // console.log("services_height" + services_height);
+  // debugPrint("windowHeight" + windowHeight);
+  debugPrint("services_pos" + services_pos);
+  debugPrint("services_height" + services_height);
   determineBackground(windowHeight + $(window).scrollTop());
 }
 
@@ -116,7 +116,7 @@ $('#gcs-navbar a').on('click', function()
 {
   let windowScrollTop = $(window).scrollTop();
   let link_id = $(this).attr('href');
-  // console.log("navbar link clicked! " + link_id);
+  // debugPrint("navbar link clicked! " + link_id);
 
   // Get the y-position of the div we're clicking for
   let div_pos = $(link_id).offset().top;
@@ -139,8 +139,8 @@ $(window).scroll(function()
 {
   let windowScrollTop = $(this).scrollTop();
   let window_bottom = windowHeight + windowScrollTop;
-  // console.log(`window bottom = ${window_bottom}`);
-  // console.log('bottom window position = ' + window_bottom);
+  debugPrint(`window bottom = ${window_bottom}`);
+  // debugPrint('bottom window position = ' + window_bottom);
 
   // let windowScrollDelta = windowScrollTop - last_windowScrollTop;
 
@@ -151,7 +151,7 @@ $(window).scroll(function()
   //   },
   //   1
   // );
-  // console.log('PARALLAX!!!!');
+  // debugPrint('PARALLAX!!!!');
   determineBackground(window_bottom);
 
   // Transforming the menu navbar
@@ -159,7 +159,7 @@ $(window).scroll(function()
 
   // Fading away the contents in the splash section
   splash_opacity = (windowHeight - windowScrollTop) / windowHeight;
-  // console.log('splash_opacity = ' + splash_opacity);
+  // debugPrint('splash_opacity = ' + splash_opacity);
   if (splash_opacity >= 0)
   {
     $('#gcs-splash>.container').show();
@@ -182,20 +182,20 @@ $(window).scroll(function()
     }
     let visible_arr = project_divs.filter(function()
     {
-      // console.log('project_div.visible: ' + project_div.visible);
+      // debugPrint('project_div.visible: ' + project_div.visible);
       return this.visible;
     });
     projects_visible = visible_arr.length == project_divs.length;
   }
   // else
-  //   console.log("All projects visible!");
+  //   debugPrint("All projects visible!");
   
 
   if (!team_members_visible)
   {
     for (let i = 0; i < team_divs.length; i++)
     {
-      // console.log(`team_divs[${i}].visible = ${team_divs[i].visible}`);
+      // debugPrint(`team_divs[${i}].visible = ${team_divs[i].visible}`);
       if (window_bottom > team_divs[i].dims.pos + team_divs[i].dims.height)
       {
         team_divs[i].visible = true;
@@ -208,19 +208,19 @@ $(window).scroll(function()
       return this.visible;
     });
     team_members_visible = team_visible_arr.length == team_divs.length;
-    // console.log("visible array: " + visible_arr);
+    // debugPrint("visible array: " + visible_arr);
   }
   // else
-  //   console.log("All team members visible!");
+  //   debugPrint("All team members visible!");
 
   if (!services_visible && (window_bottom > services_pos + (services_height >> 2)))
   {
-    // console.log("FADE IN!");
+    // debugPrint("FADE IN!");
     services_visible = true;
     fadeInServices();
   }
   // else
-  //   console.log("All services visible!");
+  //   debugPrint("All services visible!");
 
   // last_windowScrollTop = windowScrollTop;
 });
@@ -261,7 +261,7 @@ var showSpin = function(element)
   $(element).addClass("spin-element");
   setTimeout(function()
   {
-    // console.log("FULL SIZE!");
+    // debugPrint("FULL SIZE!");
     $(element).removeClass("tiny-size");
   }, 690);
 };
@@ -271,7 +271,7 @@ var growElement = function(element)
   $(element).addClass("grow-element");
   setTimeout(function()
   {
-    // console.log("FULL SIZE!");
+    // debugPrint("FULL SIZE!");
     $(element).removeClass("no-size");
   }, 590);
 };
