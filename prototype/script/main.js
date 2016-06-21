@@ -1,4 +1,4 @@
-var DEBUG = true;
+var DEBUG = false;
 var debug_line = 1;
 
 function debugPrint(str)
@@ -16,6 +16,12 @@ function debugPrint(str)
     );
   }  
 }
+
+$('#debug-toggle').click(function()
+{
+  DEBUG = !DEBUG;
+  $('#debug-info').toggle(DEBUG);
+});
 
 $(document).ready(function()
 {

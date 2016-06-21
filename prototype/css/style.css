@@ -4,6 +4,13 @@ body
   /*padding-top: 90px;*/
 }
 
+#debug-toggle
+{
+  position: fixed;
+  left: 1vh;
+  top: 8vh;
+  z-index: 1;
+}
 #debug-info
 {
   position: fixed;
