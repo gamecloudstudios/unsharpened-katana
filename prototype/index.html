@@ -8,11 +8,16 @@
 </head>
 
 <body data-spy="scroll" data-target="#gcs-navbar">
-  <div id="debug-info">
+  <div id="debug-info" style="display: none;">
     <!--<h4 class="text-center">DEBUG INFO</h4>-->
   </div>
-  <div id="header">
+  <div id="header">    
     <nav class="navbar navbar-inverse navbar-fixed-top original-navbar" id="gcs-navbar">
+      <div id="debug-toggle">
+        <button type="button" class="btn btn-info">
+          TOGGLE DEBUG
+        </button>
+      </div>
       <div class="container" id="header-container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -470,12 +475,12 @@
 
 
 
-  <!--<script src="script/jquery.min.js"></script>-->
-  <script   
+  <script src="script/jquery.min.js"></script>
+  <!--<script   
     src="https://code.jquery.com/jquery-1.12.4.min.js"   
     integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   
     crossorigin="anonymous">
-  </script>
+  </script>-->
   <script src="script/bootstrap.min.js"></script>
   <script src="script/main.js"></script>
   <script src="script/scroll.js"></script>
