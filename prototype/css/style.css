@@ -1,5 +1,6 @@
 body
 {
+  overflow-x: hidden;
   /*padding-top: 90px;*/
 }
 
@@ -101,8 +102,8 @@ body
 }
 
 
-.navbar-header, navbar-collapse
-{  
+.navbar-header
+{
   height: 100%;
 }
 
@@ -114,6 +115,21 @@ body
 .navbar-header>button
 {
   margin-top: 38px;
+}
+
+@media (min-width: 992)
+{
+  .navbar .navbar-nav
+  {
+    display: inline-block;
+    /*float: right;*/
+    vertical-align: top;
+  }
+
+  .navbar .navbar-collapse
+  {
+    text-align: center;
+  }
 }
 
 .navbar-nav
