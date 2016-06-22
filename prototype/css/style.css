@@ -402,10 +402,10 @@ body
 {
   font-style: italic;
 }
-#gcs-about .row:last-of-type
+#gcs-about .row:first-of-type
 {
   position: relative;
-  margin-top: 30vh;
+  margin-top: 14vh;
 }
 #gcs-about p
 {

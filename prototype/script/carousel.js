@@ -111,23 +111,11 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
   }
 
   var left_translate = $(
-    `<style>
-      .left-translate 
-      { 
-        transform: translateX(${num_slide / num_visible * 100}%);
-        transition-duration: 1000ms;
-      }
-     </style>`
+    "<style>.left-translate{transform: translateX(" + (num_slide / num_visible * 100) + "%); transition-duration: 1000ms;}</style>"
   );
 
   var right_translate = $(
-    `<style>
-      .right-translate 
-      { 
-        transform: translateX(-${num_slide / num_visible * 100}%);
-        transition-duration: 1000ms;
-      }
-     </style>`
+    "<style>.right-translate{transform: translateX(-" + (num_slide / num_visible * 100) + "%);transition-duration: 1000ms;}</style>"
   );
   
   // {
@@ -150,9 +138,9 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
     var carousel_left_div = $('<div>');
     carousel_left_div.addClass('carousel-left-queue');
     carousel_left_div.css(carousel_left_css);
-    for (let i = 0; i < num_slide; i++)
+    for (var i = 0; i < num_slide; i++)
     {
-      let carousel_reserve_img_container = $('<div>');
+      var carousel_reserve_img_container = $('<div>');
       carousel_reserve_img_container.addClass('carousel-img');
       carousel_reserve_img_container.css(carousel_reserve_img_container_css);
       carousel_reserve_img_container.append($('<img>').css(carousel_unit_element_css));
@@ -162,9 +150,9 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
     var carousel_middle_div = $('<div>'); 
     carousel_middle_div.addClass('carousel-visible');
     carousel_middle_div.css(carousel_middle_css);
-    for (let i = 0; i < num_visible; i++)
+    for (var i = 0; i < num_visible; i++)
     {
-      let carousel_middle_img_container = $('<div>');
+      var carousel_middle_img_container = $('<div>');
       carousel_middle_img_container.addClass('carousel-img');
       carousel_middle_img_container.css(carousel_middle_img_container_css);
       carousel_middle_img_container.append($('<img>').css(carousel_unit_element_css));
@@ -174,9 +162,9 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
     var carousel_right_div = $('<div>');
     carousel_right_div.addClass('carousel-right-queue');
     carousel_right_div.css(carousel_right_css);
-    for (let i = 0; i < num_slide; i++)
+    for (var i = 0; i < num_slide; i++)
     {
-      let carousel_reserve_img_container = $('<div>');
+      var carousel_reserve_img_container = $('<div>');
       carousel_reserve_img_container.addClass('carousel-img');
       carousel_reserve_img_container.css(carousel_reserve_img_container_css);
       carousel_reserve_img_container.append($('<img>').css(carousel_unit_element_css));
@@ -198,9 +186,9 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
     setDomArr(_first_visible);
 
     // query for all image elements in the carousel
-    let dom_imgs = $('.custom-carousel').find('img');
-    let length = dom_imgs.length;
-    for (let i = 0; i < length; i++)
+    var dom_imgs = $('.custom-carousel').find('img');
+    var length = dom_imgs.length;
+    for (var i = 0; i < length; i++)
     {
       $(dom_imgs[i]).attr('src', src_arr[dom_arr[i]]);
     }
@@ -211,7 +199,7 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
     if (dom_arr.length === 0)   
     {
       dom_arr_length = num_slide * 2 + num_visible;
-      for (let i = 0; i < dom_arr_length; i++)
+      for (var i = 0; i < dom_arr_length; i++)
       {
         dom_arr.push(-1);
       }
@@ -223,8 +211,8 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
 
   var setLeftQueue = function(_first_visible)
   {
-    let curr_src_index = _first_visible;
-    for (let i = num_slide - 1; i >= 0; i--)
+    var curr_src_index = _first_visible;
+    for (var i = num_slide - 1; i >= 0; i--)
     {
       curr_src_index = decrementArrayIndex(src_arr, curr_src_index);
       dom_arr[i] = curr_src_index; //src_arr[curr_src_index];
@@ -233,8 +221,8 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
 
   var setVisibleSection = function(_first_visible)
   {
-    let curr_src_index = _first_visible;
-    for (let i = num_slide; i < num_slide + num_visible; i++)
+    var curr_src_index = _first_visible;
+    for (var i = num_slide; i < num_slide + num_visible; i++)
     {
       dom_arr[i] = curr_src_index;
       curr_src_index = incrementArrayIndex(src_arr, curr_src_index);
@@ -243,8 +231,8 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
 
   var setRightQueue = function(_last_visible)
   {
-    let curr_src_index = _last_visible;
-    for (let i = num_slide + num_visible; i < dom_arr.length; i++)
+    var curr_src_index = _last_visible;
+    for (var i = num_slide + num_visible; i < dom_arr.length; i++)
     {      
       curr_src_index = incrementArrayIndex(src_arr, curr_src_index);
       dom_arr[i] = curr_src_index; //src_arr[curr_src_index];      
