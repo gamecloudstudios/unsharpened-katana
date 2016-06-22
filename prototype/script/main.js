@@ -5,7 +5,7 @@ function debugPrint(str)
 {
   if (DEBUG)
   {
-    let msg = `${debug_line++}: ${str}`;
+    var msg = debug_line++ + ':' + str;
     $('#debug-info').append($('<p>').append(msg));
     console.log(msg);
 

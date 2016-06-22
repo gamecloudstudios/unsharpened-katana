@@ -1,8 +1,9 @@
 //document.addEventListener("DOMContentLoaded", function(event)
-$(window).load(function()
+window.addEventListener('load', function()
 {
-  measureElements($(this));
-  checkScroll($(this));
+  console.log('Window loaded!');
+  measureElements(this);
+  checkScroll(this);
 });
 
 var bg_arr = [
@@ -39,34 +40,34 @@ var measureElements = function(the_window)
 
   // Center the BG images
   // if (!bgs_initialized)
-  let bgs = $('#gcs-backgrounds>.img-container').children('img');
+  var bgs = $('#gcs-backgrounds>.img-container').children('img');
   // debugPrint(windowWidth);
   // debugPrint(windowHeight);
-  let length = bgs.length;
-  for (let i = 0; i < length; i++)
+  var length = bgs.length;
+  for (var i = 0; i < length; i++)
   {
     // if (!bgs_initialized)
-    let img_w = bgs[i].clientWidth;
-    let img_h = bgs[i].clientHeight;
-    // let img_ar = img_w / img_h;
-    let nat_ar = bgs[i].naturalWidth / bgs[i].naturalHeight;
-    let win_ar = windowWidth / windowHeight;
+    var img_w = bgs[i].clientWidth;
+    var img_h = bgs[i].clientHeight;
+    // var img_ar = img_w / img_h;
+    var nat_ar = bgs[i].naturalWidth / bgs[i].naturalHeight;
+    var win_ar = windowWidth / windowHeight;
     
 
     // measured_bgs_natural_wh = true;
     // debugPrint((windowWidth - img_w) / 2);
     // if (i == 0)
       // debugPrint(`IMAGE[${i}]: img_w = ${img_w}, img_h = ${img_h}, nat_w = ${bgs[i].naturalWidth}, nat_h = ${bgs[i].naturalHeight}`);
-    // let img_css = {}
+    // var img_css = {}
     // Measuring the background image stylings
     // 1) window's aspect ratio (AR) < image's natural AR -- image height is 100% and confined to viewport, image width is calculated using image height and natural AR and is centered.
     // 2) window's AR >= image's natural AR -- image width is 100% and confined to the viewport. image height is calculated using image width and natural AR and is centered.
     $(bgs[i]).css(
       {
-        'width': `${win_ar >= nat_ar ? 100 : windowHeight * nat_ar / windowWidth * 100}%`,
-        'margin-left': `${win_ar >= nat_ar ? 0 : (windowWidth - img_w) / 2}px`,
-        'height': `${win_ar < nat_ar ? 100 : windowWidth / nat_ar / windowHeight * 100}%`,
-        'margin-top': `0`//${win_ar < nat_ar ? 0 : (windowHeight - img_h) / 2}px`
+        'width': (win_ar >= nat_ar ? 100 : windowHeight * nat_ar / windowWidth * 100) + '%',
+        'margin-left': (win_ar >= nat_ar ? 0 : (windowWidth - img_w) / 2) + 'px',
+        'height': (win_ar < nat_ar ? 100 : windowWidth / nat_ar / windowHeight * 100) + '%',
+        'margin-top': '0'//${win_ar < nat_ar ? 0 : (windowHeight - img_h) / 2}px`
       }
     );
   }
@@ -78,25 +79,27 @@ var measureElements = function(the_window)
   team_pos = $('#gcs-team').offset().top;
 
   project_divs = $('#gcs-portfolio>.container-fluid>.row>div');
-  for (let i = 0; i < project_divs.length; i++)
+  for (var i = 0; i < project_divs.length; i++)
   {
     project_divs[i].dims = {
       pos: $(project_divs[i]).offset().top,
       height:  $(project_divs[i]).height(),
     };
     project_divs[i].visible = false;
-    debugPrint(`project_div[${i}] pos + height = ${(project_divs[i].dims.pos + project_divs[i].dims.height)} and visible = ${project_divs[i].visible}`);
+    // debugPrint(`project_div[${i}] pos + height = ${(project_divs[i].dims.pos + project_divs[i].dims.height)} and visible = ${project_divs[i].visible}`);
+    debugPrint('project_div[' + i + '] pos + height = ' + ((project_divs[i].dims.pos + project_divs[i].dims.height)) + ' and visible = ' + (project_divs[i].visible));
   }
 
   team_divs = $('#gcs-team>.container>.row>div');
-  for (let i = 0; i < team_divs.length; i++)
+  for (var i = 0; i < team_divs.length; i++)
   {
     team_divs[i].dims = {
       pos: $(team_divs[i]).offset().top,
       height:  $(team_divs[i]).height(),
     };
     team_divs[i].visible = false;
-    debugPrint(`team_divs[${i}] pos + height = ${(team_divs[i].dims.pos + team_divs[i].dims.height)}`);
+    // debugPrint(`team_divs[${i}] pos + height = ${(team_divs[i].dims.pos + team_divs[i].dims.height)}`);
+    debugPrint('team_divs[' + i + '] pos + height = ' + ((team_divs[i].dims.pos + team_divs[i].dims.height)) + ' and visible = ' + (team_divs[i].visible));
   }
 
   // debugPrint("windowHeight" + windowHeight);
@@ -115,12 +118,12 @@ $(window).resize(function()
 
 $('#gcs-navbar a').on('click', function()
 {
-  let windowScrollTop = $(window).scrollTop();
-  let link_id = $(this).attr('href');
+  var windowScrollTop = $(window).scrollTop();
+  var link_id = $(this).attr('href');
   // debugPrint("navbar link clicked! " + link_id);
 
   // Get the y-position of the div we're clicking for
-  let div_pos = $(link_id).offset().top;
+  var div_pos = $(link_id).offset().top;
 
   scrollThisAmount(div_pos);
 
@@ -136,19 +139,20 @@ $('#gcs-navbar a').on('click', function()
  * 
  * 
  */
-$(window).scroll(function()
+// $(window).scroll(function()
+window.addEventListener('scroll', function()
 {
-  checkScroll($(this));
-});
+  checkScroll(this);
+}, false);
 
 function checkScroll(window)
 {
-  let windowScrollTop = window.scrollTop();
-  let window_bottom = windowHeight + windowScrollTop;
-  debugPrint(`window bottom = ${window_bottom}`);
+  var windowScrollTop = window.pageYOffset;
+  var window_bottom = windowHeight + windowScrollTop;
+  debugPrint('window bottom = ' + (window_bottom));
   // debugPrint('bottom window position = ' + window_bottom);
 
-  // let windowScrollDelta = windowScrollTop - last_windowScrollTop;
+  // var windowScrollDelta = windowScrollTop - last_windowScrollTop;
 
   // BG Parallax Scrolling Effect
   // $('#gcs-backgrounds').animate(
@@ -178,7 +182,7 @@ function checkScroll(window)
 
   if (!projects_visible)
   {
-    for (let i = 0; i <project_divs.length; i++)
+    for (var i = 0; i <project_divs.length; i++)
     {
       if (!project_divs[i].visible && window_bottom > project_divs[i].dims.pos + project_divs[i].dims.height)
       {
@@ -186,12 +190,12 @@ function checkScroll(window)
         showSpin($(project_divs[i]).children('.project-panel'));
       }
     }
-    let visible_arr = project_divs.filter(function()
+    var visible_arr = project_divs.filter(function()
     {
       // debugPrint('project_div.visible: ' + project_div.visible);
       return this.visible;
     });
-    debugPrint(`team_visible_arr.length=${visible_arr.length}, team_divs.length=${project_divs.length}`);
+    debugPrint('team_visible_arr.length=' + (visible_arr.length) + ', team_divs.length=' + (project_divs.length));
     projects_visible = project_divs.length > 0 && visible_arr.length == project_divs.length;
   }
   else
@@ -200,7 +204,7 @@ function checkScroll(window)
 
   if (!team_members_visible)
   {
-    for (let i = 0; i < team_divs.length; i++)
+    for (var i = 0; i < team_divs.length; i++)
     {
       // debugPrint(`team_divs[${i}].visible = ${team_divs[i].visible}`);
       if (!team_divs[i].visible && window_bottom > team_divs[i].dims.pos + team_divs[i].dims.height)
@@ -214,7 +218,7 @@ function checkScroll(window)
     {
       return this.visible;
     });
-    debugPrint(`team_visible_arr.length=${team_visible_arr.length}, team_divs.length=${team_divs.length}`);
+    debugPrint('team_visible_arr.length=' + (team_visible_arr.length) + ', team_divs.length=' + (team_divs.length));
     team_members_visible = team_divs.length > 0 && team_visible_arr.length == team_divs.length;
     // debugPrint("visible array: " + visible_arr);
   }
@@ -319,7 +323,7 @@ var determineBackground = function(scroll_pos)
     bg_arr_index = new_bg_arr_index;
     $('#gcs-backgrounds').css(
       {
-        transform: `translateY(-${100 * bg_arr_index}vh)`
+        transform: 'translateY(-' + (100 * bg_arr_index) + 'vh)'
       }
     );
   }
