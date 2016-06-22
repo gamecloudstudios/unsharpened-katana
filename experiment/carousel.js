@@ -13,17 +13,16 @@ var client_arr = [
 
 $(window).load(function()
 {
-  carousel = new Carousel('#gcs-clients', client_arr, 4, 1);
-  carousel.createCarouselDOM();  
-});
-
-$('.button-back').click(function()
-{
-    carousel.slideCarouselBack();
-});
-$('.button-forward').click(function()
-{
-  carousel.slideCarouselForward();
+  carousel = new Carousel('#gcs-clients', client_arr, 3, 2);
+  carousel.createCarouselDOM();
+  $('.button-back').click(function()
+  {
+      carousel.slideCarouselBack();
+  });
+  $('.button-forward').click(function()
+  {
+    carousel.slideCarouselForward();
+  });
 });
 
 function Carousel(_host, _src_arr, _num_visible, _num_slide)
@@ -52,12 +51,12 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
 
   var carousel_container_css = {
     position: 'absolute',
-    width: '80vw',
-    height: '100%',
+    width: '60vw',
+    height: '10vw',
     left: '0',          // Used for centering
     right: '0',         // absolutely-positioned
     margin: '0 auto',   // container to the parent.
-    clip: 'rect(0, 80vw, 100%, 0)',
+    clip: 'rect(0, 60vw, 10vw, 0)',
     overflow: 'hidden'
   };
 
@@ -67,7 +66,7 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
   };
 
   var carousel_left_css = {
-    // background: 'red',
+    background: 'red',
     position: 'absolute',    
     width: '' + (num_slide / num_visible * 100) + '%',
     height: '100%',
@@ -75,14 +74,14 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
   };
 
   var carousel_middle_css = {
-    // background: 'green',
+    background: 'green',
     position: 'absolute',    
     width: '100%',
     height: '100%',
   };
 
   var carousel_right_css = {
-    // background: 'blue',
+    background: 'blue',
     position: 'absolute',    
     width: '' + (num_slide / num_visible * 100) + '%',
     height: '100%',
@@ -92,7 +91,6 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
   var carousel_reserve_img_container_css = {
     width: '' + (1.0 / num_slide * 100) + '%',
     height: '100%',
-    padding: '2vw',
     float: 'left',
     'text-align': 'center'
   };
@@ -100,41 +98,9 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
   var carousel_middle_img_container_css = {
     width: '' + (1.0 / num_visible * 100) + '%',
     height: '100%',
-    padding: '2vw',
     float: 'left',
     'text-align': 'center'
   };
-
-  var carousel_unit_element_css = {
-    'max-width': '100%',
-    height: 'auto'
-  }
-
-  var left_translate = $(
-    `<style>
-      .left-translate 
-      { 
-        transform: translateX(${num_slide / num_visible * 100}%);
-        transition-duration: 1000ms;
-      }
-     </style>`
-  );
-
-  var right_translate = $(
-    `<style>
-      .right-translate 
-      { 
-        transform: translateX(-${num_slide / num_visible * 100}%);
-        transition-duration: 1000ms;
-      }
-     </style>`
-  );
-  
-  // {
-
-  //   transform: 'translateX(-' + (num_slide / num_visible) + '%)',
-  //   'transition-duration': '1000ms'
-  // };
 
   this.createCarouselDOM = function()
   { 
@@ -155,7 +121,7 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
       let carousel_reserve_img_container = $('<div>');
       carousel_reserve_img_container.addClass('carousel-img');
       carousel_reserve_img_container.css(carousel_reserve_img_container_css);
-      carousel_reserve_img_container.append($('<img>').css(carousel_unit_element_css));
+      carousel_reserve_img_container.append($('<img>'));
       carousel_left_div.append(carousel_reserve_img_container);
     }
 
@@ -167,7 +133,7 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
       let carousel_middle_img_container = $('<div>');
       carousel_middle_img_container.addClass('carousel-img');
       carousel_middle_img_container.css(carousel_middle_img_container_css);
-      carousel_middle_img_container.append($('<img>').css(carousel_unit_element_css));
+      carousel_middle_img_container.append($('<img>'));
       carousel_middle_div.append(carousel_middle_img_container);
     }
 
@@ -179,16 +145,13 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
       let carousel_reserve_img_container = $('<div>');
       carousel_reserve_img_container.addClass('carousel-img');
       carousel_reserve_img_container.css(carousel_reserve_img_container_css);
-      carousel_reserve_img_container.append($('<img>').css(carousel_unit_element_css));
+      carousel_reserve_img_container.append($('<img>'));
       carousel_right_div.append(carousel_reserve_img_container);
     }
 
     carousel_div.append(carousel_left_div, carousel_middle_div, carousel_right_div);
 
     $(_host).append(carousel_container);
-
-    $('html>head').append(right_translate);
-
     setCarouselImages(first_visible);
     setCarouselAutoSlide(auto_slide);
   };
@@ -253,27 +216,27 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
 
   this.slideCarouselBack = function()
   {
-    $('.custom-carousel').addClass('left-translate');
-    $('.custom-carousel').removeClass('right-translate');
+    $('.custom-carousel').addClass('left_translate');
+    $('.custom-carousel').removeClass('right_translate');
 
     setTimeout(function()
     {
       first_visible = decrementArrayIndex(src_arr, first_visible, num_slide);
       setCarouselImages(first_visible);
-      $('.custom-carousel').removeClass('left-translate');      
+      $('.custom-carousel').removeClass('left_translate');      
     }, 1000);
   };
 
   this.slideCarouselForward = function()
   {
-    $('.custom-carousel').removeClass('left-translate');
-    $('.custom-carousel').addClass('right-translate');
+    $('.custom-carousel').removeClass('left_translate');
+    $('.custom-carousel').addClass('right_translate');
 
     setTimeout(function()
     {
       first_visible = incrementArrayIndex(src_arr, first_visible, num_slide);
       setCarouselImages(first_visible);
-      $('.custom-carousel').removeClass('right-translate');  
+      $('.custom-carousel').removeClass('right_translate');  
     }, 1000);
   };
 
