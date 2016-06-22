@@ -1,9 +1,16 @@
 body
 {
+  position: relative;
   overflow-x: hidden;
   /*padding-top: 90px;*/
 }
 
+/*#bottom
+{
+  position: relative;
+  height: 100%;
+  overflow-y: scroll;
+}*/
 #debug-toggle
 {
   position: fixed;
@@ -57,6 +64,12 @@ body
 {
   transform-origin: top;  
   /*background-color: #66DAFF;*/    
+}
+
+.standard-navbar
+{
+  background: rgba(76,76,76,.95);
+  border-bottom: none;
 }
 
 .original-navbar
@@ -170,10 +183,39 @@ body
   margin-right: 1.0em;
 }
 
-.navbar-nav>li>a
+.navbar-nav>li>a 
 {
   font-size: 18px;
   padding: 0 0 .125em 0;
+}
+.navbar-inverse .navbar-nav>li>a:focus
+{
+  color: #888888;
+}
+
+.navbar-nav>li>button
+{
+  position: relative;
+  bottom: 1.3vh;
+  font-size: 18px;
+  padding: 0.5em 0.9em;
+  background: inherit;
+  border: 2px solid #888888;
+}
+.navbar-nav>li>button:hover
+{
+  background: #888888;
+  text-decoration: none;
+}
+.navbar-nav>li>button>a
+{
+  color: #888888;
+  text-decoration: none;
+}
+.navbar-nav>li>button:hover>a
+{
+  color: #FFFFFF;
+  text-decoration: none;
 }
 
 .navbar-brand
