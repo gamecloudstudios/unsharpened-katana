@@ -1,4 +1,4 @@
-var DEBUG = false;
+var DEBUG = true;
 var debug_line = 1;
 
 function debugPrint(str)
