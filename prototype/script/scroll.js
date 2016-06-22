@@ -2,6 +2,7 @@
 $(window).load(function()
 {
   measureElements($(this));
+  checkScroll($(this));
 });
 
 var bg_arr = [
@@ -137,7 +138,12 @@ $('#gcs-navbar a').on('click', function()
  */
 $(window).scroll(function()
 {
-  let windowScrollTop = $(this).scrollTop();
+  checkScroll($(this));
+});
+
+function checkScroll(window)
+{
+  let windowScrollTop = window.scrollTop();
   let window_bottom = windowHeight + windowScrollTop;
   debugPrint(`window bottom = ${window_bottom}`);
   // debugPrint('bottom window position = ' + window_bottom);
@@ -174,7 +180,7 @@ $(window).scroll(function()
   {
     for (let i = 0; i <project_divs.length; i++)
     {
-      if (window_bottom > project_divs[i].dims.pos + project_divs[i].dims.height)
+      if (!project_divs[i].visible && window_bottom > project_divs[i].dims.pos + project_divs[i].dims.height)
       {
         project_divs[i].visible = true;
         showSpin($(project_divs[i]).children('.project-panel'));
@@ -185,10 +191,11 @@ $(window).scroll(function()
       // debugPrint('project_div.visible: ' + project_div.visible);
       return this.visible;
     });
-    projects_visible = visible_arr.length == project_divs.length;
+    debugPrint(`team_visible_arr.length=${visible_arr.length}, team_divs.length=${project_divs.length}`);
+    projects_visible = project_divs.length > 0 && visible_arr.length == project_divs.length;
   }
-  // else
-  //   debugPrint("All projects visible!");
+  else
+    debugPrint("All projects visible!");
   
 
   if (!team_members_visible)
@@ -196,7 +203,7 @@ $(window).scroll(function()
     for (let i = 0; i < team_divs.length; i++)
     {
       // debugPrint(`team_divs[${i}].visible = ${team_divs[i].visible}`);
-      if (window_bottom > team_divs[i].dims.pos + team_divs[i].dims.height)
+      if (!team_divs[i].visible && window_bottom > team_divs[i].dims.pos + team_divs[i].dims.height)
       {
         team_divs[i].visible = true;
         growElement($(team_divs[i]).children('.team-panel'));
@@ -207,11 +214,12 @@ $(window).scroll(function()
     {
       return this.visible;
     });
-    team_members_visible = team_visible_arr.length == team_divs.length;
+    debugPrint(`team_visible_arr.length=${team_visible_arr.length}, team_divs.length=${team_divs.length}`);
+    team_members_visible = team_divs.length > 0 && team_visible_arr.length == team_divs.length;
     // debugPrint("visible array: " + visible_arr);
   }
-  // else
-  //   debugPrint("All team members visible!");
+  else
+    debugPrint("All team members visible!");
 
   if (!services_visible && (window_bottom > services_pos + (services_height >> 2)))
   {
@@ -223,7 +231,7 @@ $(window).scroll(function()
   //   debugPrint("All services visible!");
 
   // last_windowScrollTop = windowScrollTop;
-});
+}
 
 var fadeInServices = function()
 {
@@ -268,6 +276,7 @@ var showSpin = function(element)
 
 var growElement = function(element)
 {
+  debugPrint('growElement for: ' + element);
   $(element).addClass("grow-element");
   setTimeout(function()
   {
@@ -281,7 +290,7 @@ var scrollThisAmount = function(amount)
 {
   $('html, body').delay(200).animate(
     {
-      scrollTop: amount - 75 // 90 is height of navbar
+      scrollTop: amount - 80 // 90 is height of navbar
     },
     1000
   );
