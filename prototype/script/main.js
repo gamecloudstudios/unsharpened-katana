@@ -1,4 +1,4 @@
-var DEBUG = true;
+var DEBUG = false;
 var debug_line = 1;
 
 function debugPrint(str)
@@ -7,7 +7,7 @@ function debugPrint(str)
   {
     var msg = debug_line++ + ':' + str;
     $('#debug-info').append($('<p>').append(msg));
-    console.log(msg);
+    // console.log(msg);
 
     $('#debug-info').animate(
     {
@@ -23,9 +23,16 @@ $('#debug-toggle').click(function()
   $('#debug-info').toggle(DEBUG);
 });
 
-$(document).ready(function()
+document.addEventListener('DOMContentLoaded', function()
 {
+  $('.section-headline').parent().attr('style',
+    'text-align: center'
+  );
 
+  if (!DEBUG)
+  {
+    $('#debug-info').hide();
+  }
 });
 
 $(window).load(function()
