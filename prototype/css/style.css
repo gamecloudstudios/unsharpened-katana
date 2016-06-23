@@ -445,7 +445,12 @@ body
   /*background: rgba(251,156,2, 1);*/
   background: rgba(216,212,213,1);
 }
-#gcs-services h3, #gcs-services p
+#gcs-services p
+{
+  color: black;
+  font-size: 18px;
+}
+#gcs-services h3
 {
   color: black;
 }
@@ -473,7 +478,7 @@ body
 {
   border: 2px solid black;
   border-radius: 50%;
-  width: 40%;
+  width: 30%;
   max-height: 100%;
 }
 #gcs-services .service-tile>.caption
