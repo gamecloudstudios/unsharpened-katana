@@ -40,37 +40,10 @@ var measureElements = function(the_window)
 
   // Center the BG images
   // if (!bgs_initialized)
-  var bgs = $('#gcs-backgrounds>.img-container').children('img');
+  // var bgs = $('#gcs-backgrounds>.img-container').children('img');
   // debugPrint(windowWidth);
   // debugPrint(windowHeight);
-  var length = bgs.length;
-  for (var i = 0; i < length; i++)
-  {
-    // if (!bgs_initialized)
-    var img_w = bgs[i].clientWidth;
-    var img_h = bgs[i].clientHeight;
-    // var img_ar = img_w / img_h;
-    var nat_ar = bgs[i].naturalWidth / bgs[i].naturalHeight;
-    var win_ar = windowWidth / windowHeight;
-    
-
-    // measured_bgs_natural_wh = true;
-    // debugPrint((windowWidth - img_w) / 2);
-    // if (i == 0)
-      // debugPrint(`IMAGE[${i}]: img_w = ${img_w}, img_h = ${img_h}, nat_w = ${bgs[i].naturalWidth}, nat_h = ${bgs[i].naturalHeight}`);
-    // var img_css = {}
-    // Measuring the background image stylings
-    // 1) window's aspect ratio (AR) < image's natural AR -- image height is 100% and confined to viewport, image width is calculated using image height and natural AR and is centered.
-    // 2) window's AR >= image's natural AR -- image width is 100% and confined to the viewport. image height is calculated using image width and natural AR and is centered.
-    $(bgs[i]).css(
-      {
-        'width': (win_ar >= nat_ar ? 100 : windowHeight * nat_ar / windowWidth * 100) + '%',
-        'margin-left': (win_ar >= nat_ar ? 0 : (windowWidth - img_w) / 2) + 'px',
-        'height': (win_ar < nat_ar ? 100 : windowWidth / nat_ar / windowHeight * 100) + '%',
-        'margin-top': '0'//${win_ar < nat_ar ? 0 : (windowHeight - img_h) / 2}px`
-      }
-    );
-  }
+  // centerBGs(the_window, bgs);
   
   services_pos = $('#gcs-services').offset().top;
   services_height = $('#gcs-services').height();
