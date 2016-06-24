@@ -74,7 +74,7 @@ body
 
 .original-navbar
 {
-  padding-top: 3em;
+  /*padding-top: 3em;*/
   background: rgba(0,0,0,0);
   transform: translateY(0);
   transition: transform 0.5s, background 0.5s;
@@ -85,58 +85,7 @@ body
 .shrunken-navbar
 {
   background: rgba(76,76,76,.95);
-  transform: translateY(-3em);
-}
-
-.shrink-navbar
-{
-  animation-name: shrink-navbar;
-  animation-duration: .6s;
-}
-@keyframes shrink-navbar
-{
-  100%
-  {
-    transform: scaleY(.6);
-  }
-}
-
-.grow-navbar
-{
-  animation-name: grow-navbar;
-  animation-duration: .6s;
-}
-@keyframes grow-navbar
-{
-  100%
-  {
-    transform: scaleY(1 / .6);
-  }
-}
-
-.shrink-brand
-{
-  animation-name: shrink-brand;
-  animation-duration: .6s;
-}
-@keyframes shrink-brand
-{
-  100%
-  {
-    transform: scale(.4, .65);
-  }
-}
-.grow-brand
-{
-  animation-name: grow-brand;
-  animation-duration: .6s;
-}
-@keyframes grow-brand
-{
-  100%
-  {
-    transform: scale(1 / .4, 1 / .65);
-  }
+  /*transform: translateY(-3em);*/
 }
 
 
@@ -242,11 +191,19 @@ body
   max-height: 100%;
 }
 
-#gcs-splash, #gcs-about, #gcs-services, #gcs-portfolio, #gcs-team, #gcs-clients, #gcs-testimonials, #contact-us, #gcs-sitemap
+
+
+/*#gcs-splash, #gcs-about, #gcs-services, #gcs-portfolio, #gcs-team, #gcs-clients, #gcs-testimonials, #contact-us, #gcs-sitemap*/
+.gcs-bottom-section
 {
+  transition: height 0.5s ease-in-out;
   position: relative;
   /*top: 90px;*/
 }
+/*body *:hover .gcs-bottom-section
+{
+  transition: height 0.5s ease-in-out;
+}*/
 
 .section-headline
 {
@@ -616,8 +573,8 @@ body
 #gcs-team .row
 {
   max-height: 30%; 
+  margin-bottom: 5vh; 
 }
-
 #gcs-team .team-panel h5
 {
   transition-property: border;
@@ -653,6 +610,46 @@ body
   /*float: left;*/
   height: auto;
 }
+#gcs-team .team-panel>.tp-description
+{
+  transition: max-height .4s ease-in-out;
+  max-height: 0;
+  /*max-height: 1%;*/
+  overflow: hidden;
+  /*transform-origin: top center;
+  transform: scaleY(0);*/
+  /*position: absolute;*/
+}
+#gcs-team .team-panel:hover>.tp-description
+{
+  /*transition: height .5s ease-in-out;*/
+  max-height: 300px;
+  /*transform: scaleY(1.0);*/
+  display: block;
+  /*position: relative;*/
+}
+#gcs-team .team-panel>.tp-description>.tp-description-header
+{
+  /*display: inline-block;*/
+  max-height: 50px;
+  margin-bottom: 0;
+  /*float: right;*/
+}
+#gcs-team .team-panel>.tp-description>.tp-description-header a>img
+{
+  width: 24px;
+  height: auto;
+}
+/*#gcs-team .team-panel>.tp-description>div
+{
+  transition: transform .4s ease-in-out;
+  transform-origin: bottom center;
+  transform: scaleY(100.0);
+}
+#gcs-team .team-panel:hover>.tp-description>div
+{
+  transform: scaleY(1.0);
+}*/
 .grow-element
 {
   animation-name: grow;
