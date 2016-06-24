@@ -60,7 +60,7 @@ var measureElements = function(the_window)
     };
     project_divs[i].visible = false;
     // debugPrint(`project_div[${i}] pos + height = ${(project_divs[i].dims.pos + project_divs[i].dims.height)} and visible = ${project_divs[i].visible}`);
-    debugPrint('project_div[' + i + '] pos + height = ' + ((project_divs[i].dims.pos + project_divs[i].dims.height)) + ' and visible = ' + (project_divs[i].visible));
+    // debugPrint('project_div[' + i + '] pos + height = ' + ((project_divs[i].dims.pos + project_divs[i].dims.height)) + ' and visible = ' + (project_divs[i].visible));
   }
 
   team_divs = $('#gcs-team>.container>.row>div');
@@ -72,20 +72,18 @@ var measureElements = function(the_window)
     };
     team_divs[i].visible = false;
     // debugPrint(`team_divs[${i}] pos + height = ${(team_divs[i].dims.pos + team_divs[i].dims.height)}`);
-    debugPrint('team_divs[' + i + '] pos + height = ' + ((team_divs[i].dims.pos + team_divs[i].dims.height)) + ' and visible = ' + (team_divs[i].visible));
+    // debugPrint('team_divs[' + i + '] pos + height = ' + ((team_divs[i].dims.pos + team_divs[i].dims.height)) + ' and visible = ' + (team_divs[i].visible));
   }
 
   // debugPrint("windowHeight" + windowHeight);
-  debugPrint("services_pos" + services_pos);
-  debugPrint("services_height" + services_height);
+  // debugPrint("services_pos" + services_pos);
+  // debugPrint("services_height" + services_height);
   determineBackground(windowHeight + $(window).scrollTop());
 }
 
 $(window).resize(function()
 {
   measureElements($(this));
-
-  
 });
 
 
@@ -253,7 +251,7 @@ var showSpin = function(element)
 
 var growElement = function(element)
 {
-  debugPrint('growElement for: ' + element);
+  // debugPrint('growElement for: ' + element);
   $(element).addClass("grow-element");
   setTimeout(function()
   {

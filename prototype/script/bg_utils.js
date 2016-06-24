@@ -6,6 +6,7 @@ window.addEventListener('load', function()
 
 $(window).resize(function()
 {
+  debugPrint('WINDOW RESIZING!!!');
   var bgs = $('#gcs-backgrounds>.img-container').children('img');
   centerBGs(window, bgs);
 });
