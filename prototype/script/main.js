@@ -7,7 +7,7 @@ function debugPrint(str)
   {
     var msg = debug_line++ + ':' + str;
     $('#debug-info').append($('<p>').append(msg));
-    console.log(msg);
+    // console.log(msg);
 
     $('#debug-info').animate(
     {
