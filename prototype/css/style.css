@@ -1,8 +1,26 @@
+@font-face
+{
+  font-family: Sen;
+  src: url('../fonts/Sen-Regular.otf');
+}
+@font-face
+{
+  font-family: HussarBoldWeb;
+  src: url('../fonts/HussarBoldWeb.otf');
+}
+
+*
+{
+  /*font-family: 'Sen' !important;*/
+  font-family: 'HussarBoldWeb' !important;
+}
+
 body
 {
   position: relative;
   overflow-x: hidden;
   /*padding-top: 90px;*/
+  /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;*/
 }
 
 /*#bottom
@@ -74,7 +92,7 @@ body
 
 .original-navbar
 {
-  /*padding-top: 3em;*/
+  padding-top: 3em;
   background: rgba(0,0,0,0);
   transform: translateY(0);
   transition: transform 0.5s, background 0.5s;
@@ -85,7 +103,7 @@ body
 .shrunken-navbar
 {
   background: rgba(76,76,76,.95);
-  /*transform: translateY(-3em);*/
+  transform: translateY(-3em);
 }
 
 
