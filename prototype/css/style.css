@@ -573,7 +573,11 @@ body
 #gcs-team .row
 {
   max-height: 30%; 
-  margin-bottom: 5vh; 
+  /*margin-bottom: 5vh; */
+}
+#gcs-team .team-panel
+{
+  margin-bottom: 5vh;
 }
 #gcs-team .team-panel h5
 {
@@ -637,6 +641,15 @@ body
 }
 #gcs-team .team-panel>.tp-description>.tp-description-header a>img
 {
+  transition: background .3s;
+  border-radius: 50%;
+  width: 24px;
+  height: auto;
+}
+#gcs-team .team-panel>.tp-description>.tp-description-header a>img:hover
+{
+  border-radius: 50%;
+  background: #1B86BC;
   width: 24px;
   height: auto;
 }
