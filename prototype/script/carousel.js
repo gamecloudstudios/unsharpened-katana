@@ -58,7 +58,7 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
     right: '0',         // absolutely-positioned
     margin: '0 auto',   // container to the parent.
     clip: 'rect(0, 80vw, 100%, 0)',
-    overflow: 'hidden'
+    'overflow-x': 'hidden'
   };
 
   var carousel_css = {
