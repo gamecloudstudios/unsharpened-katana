@@ -33,6 +33,13 @@ document.addEventListener('DOMContentLoaded', function()
   {
     $('#debug-info').hide();
   }
+
+  $('#gcs-navbar li>button').on('click', function()
+  {
+    var url_directory = this.textContent;
+    var dest = 'http://' + top.location.host.toString() + '/gamecloudstudios/prototype/' + url_directory;
+    window.location = dest;   
+  });
 });
 
 $(window).load(function()

@@ -130,7 +130,7 @@ function checkScroll(window)
   //   {
   //     top: "-=" + (windowScrollDelta * .3) 
   //   },
-  //   1
+  //   0
   // );
   // debugPrint('PARALLAX!!!!');
   determineBackground(window_bottom);

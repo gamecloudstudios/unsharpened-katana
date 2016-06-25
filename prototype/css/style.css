@@ -165,7 +165,7 @@ body
 .navbar-nav>li>button
 {
   position: relative;
-  bottom: 1.3vh;
+  bottom: 1.75vh;
   font-size: 18px;
   padding: 0.5em 0.9em;
   background: inherit;
@@ -216,6 +216,8 @@ body
 {
   transition: height 0.5s ease-in-out;
   position: relative;
+  padding-top: 10vh;
+  padding-bottom: 10vh; 
   /*top: 90px;*/
 }
 /*body *:hover .gcs-bottom-section
@@ -397,7 +399,7 @@ body
 {
   font-style: italic;
 }
-#gcs-about .row:first-of-type
+/*#gcs-about .row:first-of-type
 {
   position: relative;
   margin-top: 14vh;
@@ -406,7 +408,7 @@ body
 {
   position: relative;
   margin-bottom: 14vh;
-}
+}*/
 #gcs-about p
 {
   color: #D1D1D1;
@@ -735,6 +737,7 @@ body
 {
   min-height: 40vh;
   background: rgba(216,212,213,1);
+  padding-bottom: 18vh;
 }
 #gcs-clients .row
 {
@@ -781,4 +784,47 @@ body
 #gcs-sitemap
 {
   background: rgba(0,0,0,1);
+}
+
+/* JOBS PAGE CONTENT */
+#gcs-jobs-overview
+{
+  min-height: 90vh;
+  background: rgba(216,212,213,1);
+  /*background: rgba(76,76,76,1);  */
+}
+
+#gcs-jobs-overview p,
+#gcs-jobs-overview h2
+{
+  color: #000000;
+}
+
+#gcs-jobs-meme
+{
+  background: rgba(0,0,0,.5); 
+}
+#gcs-jobs-meme .meme-quote
+{
+  font-style: italic;
+}
+#gcs-jobs-meme .meme-quote-source
+{
+  color: #ffffff;
+  float: right;
+  text-align: right;
+}
+
+#gcs-jobs-openings
+{
+  background: rgba(76,76,76,.9);  
+}
+#gcs-jobs-openings p,
+#gcs-jobs-openings li
+{
+  color: rgba(180,180,180,1);
+}
+#gcs-jobs-openings .gcs-job-note
+{
+  margin-top: 10vh;
 }
