@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function()
   $('#gcs-navbar li>button').on('click', function()
   {
     var url_directory = this.textContent;
-    var dest = 'http://' + top.location.host.toString() + '/gamecloudstudios/prototype/' + url_directory;
+    var dest = 'http://gamecloudstudios.github.io/unsharpened-katana/prototype/' + url_directory;
     window.location = dest;   
   });
 });
