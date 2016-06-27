@@ -8,8 +8,10 @@ $(window).resize(function()
 {
   debugPrint('WINDOW RESIZING!!!');
   var bgs = $('#gcs-backgrounds>.img-container').children('img');
+  debugPrint('Calling centerBGs A');
   centerBGs(window, bgs);
 });
+
 
 function centerBGs(the_window, bg_arr)
 {
@@ -25,7 +27,7 @@ function centerBGs(the_window, bg_arr)
     // var img_ar = img_w / img_h;
     var nat_ar = bg_arr[i].naturalWidth / bg_arr[i].naturalHeight;
     var win_ar = windowWidth / windowHeight;
-    
+
 
     // measured_bgs_natural_wh = true;
     // debugPrint((windowWidth - img_w) / 2);
