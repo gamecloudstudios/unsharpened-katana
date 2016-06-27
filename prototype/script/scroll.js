@@ -85,6 +85,7 @@ $(window).resize(function()
 {
   measureElements($(this));
   var bgs = $('#gcs-backgrounds>.img-container').children('img');
+  debugPrint('Calling centerBGs B');
   centerBGs(window, bgs);
 });
 
