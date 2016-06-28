@@ -726,7 +726,7 @@ body
 
 #gcs-clients
 {
-  min-height: 40vh;
+  min-height: 50vh;
   background: rgba(216,212,213,1);
   padding-bottom: 18vh;
 }

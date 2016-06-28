@@ -1,20 +1,26 @@
 var carousel;
 var client_arr = [
-  'img/carousel/client01.png',
-  'img/carousel/client02.png',
-  'img/carousel/client03.png',
-  'img/carousel/client04.png',
-  'img/carousel/client05.png',
-  'img/carousel/client06.png',
-  'img/carousel/client07.png',
-  'img/carousel/client08.png',
-  'img/carousel/client09.png'
+  // 'img/carousel/client01.png',
+  // 'img/carousel/client02.png',
+  // 'img/carousel/client03.png',
+  // 'img/carousel/client04.png',
+  // 'img/carousel/client05.png',
+  // 'img/carousel/client06.png',
+  // 'img/carousel/client07.png',
+  // 'img/carousel/client08.png',
+  // 'img/carousel/client09.png'
+  'img/carousel/appy.png',
+  'img/carousel/creata.png',
+  'img/carousel/dena.png',
+  'img/carousel/glo.png',
+  'img/carousel/kabam.png',
+  'img/carousel/mobage.png'
 ];
 
 $(window).load(function()
 {
   carousel = new Carousel('#gcs-clients', client_arr, 4, 1);
-  carousel.createCarouselDOM();  
+  carousel.createCarouselDOM();
 });
 
 $('.button-back').click(function()
@@ -33,7 +39,7 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
   // Array of all elements used in the carousel
   var src_arr = _src_arr;
   // Number of elements that will be visible in the carousel
-  var num_visible = _num_visible; 
+  var num_visible = _num_visible;
   // Number of elements that will slide in/out at a time.  Must be <= num_visible
   var num_slide = _num_slide;
 
@@ -43,7 +49,7 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
     return;
   }
   // Array of indices from src_arr that represent the elements in the carousel DOM
-  var dom_arr = []; 
+  var dom_arr = [];
 
   var first_visible = 0;
 
@@ -68,7 +74,7 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
 
   var carousel_left_css = {
     // background: 'red',
-    position: 'absolute',    
+    position: 'absolute',
     width: '' + (num_slide / num_visible * 100) + '%',
     height: '100%',
     right: '100%'
@@ -76,14 +82,14 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
 
   var carousel_middle_css = {
     // background: 'green',
-    position: 'absolute',    
+    position: 'absolute',
     width: '100%',
     height: '100%',
   };
 
   var carousel_right_css = {
     // background: 'blue',
-    position: 'absolute',    
+    position: 'absolute',
     width: '' + (num_slide / num_visible * 100) + '%',
     height: '100%',
     left: '100%'
@@ -117,7 +123,7 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
   var right_translate = $(
     "<style>.right-translate{transform: translateX(-" + (num_slide / num_visible * 100) + "%);transition-duration: 1000ms;}</style>"
   );
-  
+
   // {
 
   //   transform: 'translateX(-' + (num_slide / num_visible) + '%)',
@@ -125,7 +131,7 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
   // };
 
   this.createCarouselDOM = function()
-  { 
+  {
     var carousel_container = $('<div>');
     carousel_container.addClass('carousel-container');
     carousel_container.css(carousel_container_css);
@@ -147,7 +153,7 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
       carousel_left_div.append(carousel_reserve_img_container);
     }
 
-    var carousel_middle_div = $('<div>'); 
+    var carousel_middle_div = $('<div>');
     carousel_middle_div.addClass('carousel-visible');
     carousel_middle_div.css(carousel_middle_css);
     for (var i = 0; i < num_visible; i++)
@@ -196,14 +202,14 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
 
   var setDomArr = function(_first_visible)
   {
-    if (dom_arr.length === 0)   
+    if (dom_arr.length === 0)
     {
       dom_arr_length = num_slide * 2 + num_visible;
       for (var i = 0; i < dom_arr_length; i++)
       {
         dom_arr.push(-1);
       }
-    } 
+    }
     setLeftQueue(_first_visible);
     setVisibleSection(_first_visible);
     setRightQueue(dom_arr[num_slide + num_visible - 1]);
@@ -233,9 +239,9 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
   {
     var curr_src_index = _last_visible;
     for (var i = num_slide + num_visible; i < dom_arr.length; i++)
-    {      
+    {
       curr_src_index = incrementArrayIndex(src_arr, curr_src_index);
-      dom_arr[i] = curr_src_index; //src_arr[curr_src_index];      
+      dom_arr[i] = curr_src_index; //src_arr[curr_src_index];
     }
   };
 
@@ -248,7 +254,7 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
     {
       first_visible = decrementArrayIndex(src_arr, first_visible, num_slide);
       setCarouselImages(first_visible);
-      $('.custom-carousel').removeClass('left-translate');      
+      $('.custom-carousel').removeClass('left-translate');
     }, 1000);
   };
 
@@ -261,7 +267,7 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
     {
       first_visible = incrementArrayIndex(src_arr, first_visible, num_slide);
       setCarouselImages(first_visible);
-      $('.custom-carousel').removeClass('right-translate');  
+      $('.custom-carousel').removeClass('right-translate');
     }, 1000);
   };
 
