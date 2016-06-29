@@ -673,6 +673,10 @@ body
   width: 24px;
   height: auto;
 }
+#gcs-team .modal ul
+{
+  padding: 0;
+}
 #gcs-team .modal .modal-header>.modal-header-social-links>span>a>img
 {
   transition: background .3s;
