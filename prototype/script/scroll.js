@@ -31,7 +31,7 @@ var services_visible = false;
 /**
  * measureElements
  * Measures the dimensions of numerous elements on the page
- *  and stores those measurements into variables. 
+ *  and stores those measurements into variables.
  */
 var measureElements = function(the_window)
 {
@@ -44,7 +44,7 @@ var measureElements = function(the_window)
   // debugPrint(windowWidth);
   // debugPrint(windowHeight);
   // centerBGs(the_window, bgs);
-  
+
   services_pos = $('#gcs-services').offset().top;
   services_height = $('#gcs-services').height();
 
@@ -84,6 +84,9 @@ var measureElements = function(the_window)
 $(window).resize(function()
 {
   measureElements($(this));
+  var bgs = $('#gcs-backgrounds>.img-container').children('img');
+  debugPrint('Calling centerBGs B');
+  centerBGs(window, bgs);
 });
 
 
@@ -104,11 +107,11 @@ $('#gcs-navbar a').on('click', function()
 
 /**
  * WINDOW SCROLL EVENT HANDLER
- * 
- * 
- * 
- * 
- * 
+ *
+ *
+ *
+ *
+ *
  */
 // $(window).scroll(function()
 window.addEventListener('scroll', function()
@@ -128,7 +131,7 @@ function checkScroll(window)
   // BG Parallax Scrolling Effect
   // $('#gcs-backgrounds').animate(
   //   {
-  //     top: "-=" + (windowScrollDelta * .3) 
+  //     top: "-=" + (windowScrollDelta * .3)
   //   },
   //   0
   // );
@@ -171,7 +174,7 @@ function checkScroll(window)
   }
   else
     debugPrint("All projects visible!");
-  
+
 
   if (!team_members_visible)
   {
@@ -213,28 +216,28 @@ var fadeInServices = function()
   $('#gcs-services .service-tile:eq(0)').delay(250).animate(
     {
       opacity: 1
-    }, 
+    },
     'slow'
   );
 
   $('#gcs-services .service-tile:eq(1)').delay(1000).animate(
     {
       opacity: 1
-    }, 
+    },
     'slow'
   );
 
   $('#gcs-services .service-tile:eq(2)').delay(1750).animate(
     {
       opacity: 1
-    }, 
+    },
     'slow'
   );
 
   $('#gcs-services .service-tile:eq(3)').delay(2500).animate(
     {
       opacity: 1
-    }, 
+    },
     'slow'
   );
 };

@@ -24,7 +24,7 @@ var overview_height = 0;
 /**
  * measureElements
  * Measures the dimensions of numerous elements on the page
- *  and stores those measurements into variables. 
+ *  and stores those measurements into variables.
  */
 var measureElements = function(the_window)
 {
@@ -46,6 +46,8 @@ var measureElements = function(the_window)
 $(window).resize(function()
 {
   measureElements($(this));
+  var bgs = $('#gcs-backgrounds>.img-container').children('img');
+  centerBGs(window, bgs);
 });
 
 
@@ -66,11 +68,11 @@ $('#gcs-navbar a').on('click', function()
 
 /**
  * WINDOW SCROLL EVENT HANDLER
- * 
- * 
- * 
- * 
- * 
+ *
+ *
+ *
+ *
+ *
  */
 // $(window).scroll(function()
 window.addEventListener('scroll', function()
@@ -89,7 +91,7 @@ function checkScroll(window)
   // BG Parallax Scrolling Effect
   // $('#gcs-backgrounds').animate(
   //   {
-  //     top: "-=" + (windowScrollDelta * .3) 
+  //     top: "-=" + (windowScrollDelta * .3)
   //   },
   //   1
   // );
