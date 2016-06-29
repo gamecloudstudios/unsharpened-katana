@@ -673,6 +673,16 @@ body
   width: 24px;
   height: auto;
 }
+#gcs-team .modal .modal-header>.modal-header-social-links>span>a>img
+{
+  transition: background .3s;
+  border-radius: 50%;
+  height: 34px;
+}
+#gcs-team .modal .modal-header>.modal-header-social-links>span>a>img:hover
+{
+  background: #1B86BC;
+}
 
 .grow-element
 {
