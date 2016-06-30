@@ -1,23 +1,23 @@
 .fadeout-up
 {
-  transform: translateY(-1vh);
+  transform: translateY(-1.5em);
   opacity: 0;
 }
 
 .fadeout-down
 {
-  transform: translateY(1vh);
+  transform: translateY(1.5em);
   opacity: 0;
 }
 .fadeout-left
 {
-  transform: translateX(-1vw);
+  transform: translateX(-1.5em);
   opacity: 0;
 }
 
 .fadeout-right
 {
-  transform: translateX(1vw);
+  transform: translateX(1.5em);
   opacity: 0;
 }
 
