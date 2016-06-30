@@ -9,6 +9,12 @@
   src: url('../fonts/HussarBoldWeb.otf');
 }
 
+html, body
+{
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 *
 {
   /*font-family: 'Sen' !important;*/
@@ -18,7 +24,6 @@
 body
 {
   position: relative;
-  overflow-x: hidden;
   /*padding-top: 90px;*/
   /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;*/
 }
