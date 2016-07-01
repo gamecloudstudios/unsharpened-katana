@@ -1,9 +1,10 @@
 //document.addEventListener("DOMContentLoaded", function(event)
-window.addEventListener('load', function()
+jQuery(window).load(function()
 {
   console.log('Window loaded!');
   measureElements(this);
   checkScroll(this);
+  fadeOutLoader($('.preloader-jobs'));
 });
 
 var bg_arr = [
@@ -206,4 +207,14 @@ var fadeInDirection = function(element)
   //   // debugPrint("FULL SIZE!");
   //   $(element).removeClass("fadeout-" + str_direction);
   // }, 690);
+}
+
+var fadeOutLoader = function(element)
+{
+  $('.preloader-gif').addClass('fadeout-gif');
+  var self = element;
+  $(element).addClass('fadeout');
+  setTimeout(function(){
+    $(self).addClass('post-fadeout');
+  }, 2000);
 }
