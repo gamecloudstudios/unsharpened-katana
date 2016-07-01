@@ -26,5 +26,5 @@
   transition-property: transform, opacity;
   transition-duration: 2000ms;
   transform: translate(0,0);
-  opacity: 1.0);
+  opacity: 1.0;
 }
