@@ -1,9 +1,10 @@
 //document.addEventListener("DOMContentLoaded", function(event)
-window.addEventListener('load', function()
+jQuery(window).load(function()
 {
   console.log('Window loaded!');
   measureElements(this);
   checkScroll(this);
+  fadeOutLoader($('.preloader-jobs'));
 });
 
 var bg_arr = [
@@ -21,6 +22,7 @@ var splash_opacity = 1.0;
 var overview_pos = 0;
 var overview_height = 0;
 
+var fadein_elems = [];
 /**
  * measureElements
  * Measures the dimensions of numerous elements on the page
@@ -39,6 +41,19 @@ var measureElements = function(the_window)
   // centerBGs(the_window, bgs);
   meme_pos = $('#gcs-jobs-meme').offset().top;
   meme_height = $('#gcs-jobs-meme').height();
+
+  fadein_elems = jQuery.merge($('.fadeout-left'), $('.fadeout-right'));
+  fadein_elems = jQuery.merge(fadein_elems, $('.fadeout-up'));
+  fadein_elems = jQuery.merge(fadein_elems, $('.fadeout-down'));
+  debugPrint(fadein_elems);
+  for (var i = 0, length = fadein_elems.length; i < length; i++)
+  {
+    fadein_elems[i].dims = {
+      pos: $(fadein_elems[i]).offset().top,
+      height: $(fadein_elems[i]).height(),
+    }
+    fadein_elems[i].visible = false;
+  }
 
   determineBackground(windowHeight + $(window).scrollTop());
 }
@@ -114,6 +129,17 @@ function checkScroll(window)
     $('#gcs-splash>.container').hide();
   }
 
+  if (true)
+  {
+    for (var i = 0, length = fadein_elems.length; i < length; i++)
+    {
+      if (!fadein_elems[i].visible && window_bottom > fadein_elems[i].dims.pos + ($(fadein_elems[i]).hasClass('fadein-early') ? fadein_elems[i].dims.height / 2 : fadein_elems[i].dims.height))
+      {
+        fadein_elems[i].visible = true;
+        fadeInDirection($(fadein_elems[i]));
+      }
+    }
+  }
   // last_windowScrollTop = windowScrollTop;
 }
 
@@ -162,3 +188,33 @@ var determineBackground = function(scroll_pos)
     );
   }
 };
+
+var fadeInDirection = function(element)
+{
+  // Extract the classNames of this element.
+  var str_classes = element.context.classList;
+  var i = 0;
+  for (length = str_classes.length; i < length; i++)
+  {
+    if (str_classes[i].startsWith('fadeout-'))
+      break;
+  }
+
+  $(element).addClass("fadein");
+  $(element).removeClass(str_classes[i]);
+  // setTimeout(function()
+  // {
+  //   // debugPrint("FULL SIZE!");
+  //   $(element).removeClass("fadeout-" + str_direction);
+  // }, 690);
+}
+
+var fadeOutLoader = function(element)
+{
+  $('.preloader-gif').addClass('fadeout-gif');
+  var self = element;
+  $(element).addClass('fadeout');
+  setTimeout(function(){
+    $(self).addClass('post-fadeout');
+  }, 2000);
+}

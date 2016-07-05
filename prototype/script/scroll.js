@@ -1,9 +1,11 @@
 //document.addEventListener("DOMContentLoaded", function(event)
-window.addEventListener('load', function()
+// window.addEventListener('load', function()
+jQuery(window).load(function()
 {
   console.log('Window loaded!');
   measureElements(this);
   checkScroll(this);
+  fadeOutLoader($('.preloader-home'));
 });
 
 var bg_arr = [
@@ -19,6 +21,7 @@ var services_pos, services_height;
 var about_pos, team_pos;
 var project_divs = [];
 var team_divs = [];
+var fadein_elems = [];
 // var last_windowScrollTop = 0;
 var splash_opacity = 1.0;
 
@@ -51,17 +54,28 @@ var measureElements = function(the_window)
   about_pos = $('#gcs-about').offset().top;
   team_pos = $('#gcs-team').offset().top;
 
-  project_divs = $('#gcs-portfolio>.container-fluid>.row>div');
-  for (var i = 0; i < project_divs.length; i++)
+  fadein_elems = jQuery.merge($('.fadeout-left'), $('.fadeout-right'));
+  fadein_elems = jQuery.merge(fadein_elems, $('.fadeout-up'));
+  fadein_elems = jQuery.merge(fadein_elems, $('.fadeout-down'));
+  debugPrint(fadein_elems);
+  for (var i = 0, length = fadein_elems.length; i < length; i++)
   {
-    project_divs[i].dims = {
-      pos: $(project_divs[i]).offset().top,
-      height:  $(project_divs[i]).height(),
-    };
-    project_divs[i].visible = false;
-    // debugPrint(`project_div[${i}] pos + height = ${(project_divs[i].dims.pos + project_divs[i].dims.height)} and visible = ${project_divs[i].visible}`);
-    // debugPrint('project_div[' + i + '] pos + height = ' + ((project_divs[i].dims.pos + project_divs[i].dims.height)) + ' and visible = ' + (project_divs[i].visible));
+    fadein_elems[i].dims = {
+      pos: $(fadein_elems[i]).offset().top,
+      height: $(fadein_elems[i]).height(),
+    }
+    fadein_elems[i].visible = false;
   }
+
+  // project_divs = $('#gcs-portfolio>.container-fluid>.row>div');
+  // for (var i = 0; i < project_divs.length; i++)
+  // {
+  //   project_divs[i].dims = {
+  //     pos: $(project_divs[i]).offset().top,
+  //     height:  $(project_divs[i]).height(),
+  //   };
+  //   project_divs[i].visible = false;
+  // }
 
   team_divs = $('#gcs-team>.container>.row>div');
   for (var i = 0; i < team_divs.length; i++)
@@ -71,8 +85,6 @@ var measureElements = function(the_window)
       height:  $(team_divs[i]).height(),
     };
     team_divs[i].visible = false;
-    // debugPrint(`team_divs[${i}] pos + height = ${(team_divs[i].dims.pos + team_divs[i].dims.height)}`);
-    // debugPrint('team_divs[' + i + '] pos + height = ' + ((team_divs[i].dims.pos + team_divs[i].dims.height)) + ' and visible = ' + (team_divs[i].visible));
   }
 
   // debugPrint("windowHeight" + windowHeight);
@@ -154,26 +166,38 @@ function checkScroll(window)
     $('#gcs-splash>.container').hide();
   }
 
-  if (!projects_visible)
+  if (true)
   {
-    for (var i = 0; i <project_divs.length; i++)
+    for (var i = 0, length = fadein_elems.length; i < length; i++)
     {
-      if (!project_divs[i].visible && window_bottom > project_divs[i].dims.pos + project_divs[i].dims.height)
+      if (!fadein_elems[i].visible && window_bottom > fadein_elems[i].dims.pos + ($(fadein_elems[i]).hasClass('fadein-early') ? fadein_elems[i].dims.height / 2 : fadein_elems[i].dims.height))
       {
-        project_divs[i].visible = true;
-        showSpin($(project_divs[i]).children('.project-panel'));
+        fadein_elems[i].visible = true;
+        fadeInDirection($(fadein_elems[i]));
       }
     }
-    var visible_arr = project_divs.filter(function()
-    {
-      // debugPrint('project_div.visible: ' + project_div.visible);
-      return this.visible;
-    });
-    debugPrint('team_visible_arr.length=' + (visible_arr.length) + ', team_divs.length=' + (project_divs.length));
-    projects_visible = project_divs.length > 0 && visible_arr.length == project_divs.length;
   }
-  else
-    debugPrint("All projects visible!");
+
+  // if (!projects_visible)
+  // {
+  //   for (var i = 0; i <project_divs.length; i++)
+  //   {
+  //     if (!project_divs[i].visible && window_bottom > project_divs[i].dims.pos + project_divs[i].dims.height)
+  //     {
+  //       project_divs[i].visible = true;
+  //       // showSpin($(project_divs[i]).children('.project-panel'));
+  //     }
+  //   }
+  //   var visible_arr = project_divs.filter(function()
+  //   {
+  //     // debugPrint('project_div.visible: ' + project_div.visible);
+  //     return this.visible;
+  //   });
+  //   debugPrint('team_visible_arr.length=' + (visible_arr.length) + ', team_divs.length=' + (project_divs.length));
+  //   projects_visible = project_divs.length > 0 && visible_arr.length == project_divs.length;
+  // }
+  // else
+  //   debugPrint("All projects visible!");
 
 
   if (!team_members_visible)
@@ -302,3 +326,33 @@ var determineBackground = function(scroll_pos)
     );
   }
 };
+
+var fadeInDirection = function(element)
+{
+  // Extract the classNames of this element.
+  var str_classes = element.context.classList;
+  var i = 0;
+  for (length = str_classes.length; i < length; i++)
+  {
+    if (str_classes[i].startsWith('fadeout-'))
+      break;
+  }
+
+  $(element).addClass("fadein");
+  $(element).removeClass(str_classes[i]);
+  // setTimeout(function()
+  // {
+  //   // debugPrint("FULL SIZE!");
+  //   $(element).removeClass("fadeout-" + str_direction);
+  // }, 690);
+}
+
+var fadeOutLoader = function(element)
+{
+  $('.preloader-gif').addClass('fadeout-gif');
+  var self = element;
+  $(element).addClass('fadeout');
+  setTimeout(function(){
+    $(self).addClass('post-fadeout');
+  }, 2000);
+}
