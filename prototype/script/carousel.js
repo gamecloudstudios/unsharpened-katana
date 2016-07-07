@@ -121,7 +121,7 @@ function Carousel(_host, _src_arr, _num_visible, _num_slide)
   );
 
   var right_translate = $(
-    "<style>.right-translate{transform: translateX(-" + (num_slide / num_visible * 100) + "%);transition-duration: 1000ms;}</style>"
+    "<style>.right-translate{transform: translateX(-" + (num_slide / num_visible * 100) + "%);transition-duration: 1000ms; -webkit-transform: translateX(-" + (num_slide / num_visible * 100) + "%); -webkit-transition-duration: 1000ms;}</style>"
   );
 
   // {

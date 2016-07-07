@@ -321,7 +321,8 @@ var determineBackground = function(scroll_pos)
     bg_arr_index = new_bg_arr_index;
     $('#gcs-backgrounds').css(
       {
-        transform: 'translateY(-' + (100 * bg_arr_index) + 'vh)'
+        transform: 'translateY(-' + (100 * bg_arr_index) + 'vh)',
+        '-webkit-transform': 'translateY(-' + (100 * bg_arr_index) + 'vh)'
       }
     );
   }

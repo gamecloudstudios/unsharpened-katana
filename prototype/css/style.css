@@ -69,6 +69,7 @@ body
   width: 100%;
   text-align: center;
   transform-origin: top;
+  -webkit-transform-origin: top;
 }
 
 #header-container
@@ -86,6 +87,7 @@ body
 .navbar
 {
   transform-origin: top;
+  -webkit-transform-origin: top;
   /*background-color: #66DAFF;*/
 }
 
@@ -101,6 +103,8 @@ body
   background: rgba(0,0,0,0);
   transform: translateY(0);
   transition: transform 0.5s, background 0.5s;
+  -webkit-transform: translateY(0);
+  -webkit-transition: -webkit-transform 0.5s, background 0.5s;
   border-bottom: none;
   /*height: 90px;*/
 }
@@ -109,6 +113,7 @@ body
 {
   background: rgba(76,76,76,.95);
   transform: translateY(-3em);
+  -webkit-transform: translateY(-3em);
 }
 
 
@@ -170,7 +175,7 @@ body
 .navbar-nav>li>button
 {
   position: relative;
-  bottom: 1.75vh;
+  bottom: 0.75em;
   font-size: 18px;
   padding: 0.5em 0.9em;
   background: inherit;
@@ -210,6 +215,7 @@ body
 .navbar-brand>img
 {
   transform-origin: left;
+  -webkit-transform-origin: left;
   max-width: 100%;
   max-height: 100%;
 }
@@ -220,6 +226,7 @@ body
 .gcs-bottom-section
 {
   transition: height 0.5s ease-in-out;
+  -webkit-transition: height 0.5s ease-in-out;
   position: relative;
   padding-top: 10vh;
   padding-bottom: 10vh;
@@ -236,6 +243,7 @@ body
   padding-bottom: 1vh;
   margin-bottom: 5vh;
   display: inline-flex;
+  display: -webkit-inline-flex;
 }
 
 #gallery
@@ -336,7 +344,8 @@ body
 
 #gcs-splash
 {
-  min-height: 100vh;
+  /*min-height: 100vh;*/
+  min-height: 61em;
   width: 100vw;
   background: rgba(0,0,0,.5);
 }
@@ -446,6 +455,7 @@ body
   border-bottom: 2px solid black;
   padding-bottom: 1vh;
   display: inline-flex;
+  display: -webkit-inline-flex;
 }
 #gcs-services .service-tile
 {
@@ -489,6 +499,7 @@ body
 #gcs-team .team-panel
 {
   transform-origin: center;
+  -webkit-transform-origin: center;
 }
 
 .spin-element
@@ -496,12 +507,16 @@ body
   animation-name: spin;
   animation-duration: .7s;
   animation-timing-function: ease;
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: .7s;
+  -webkit-animation-timing-function: ease;
   /*animation-timing-function: cubic-bezier(.65, 1.95, .03, .32);*/
 }
 
 .tiny-size
 {
   transform: rotate(0) scale(0,0);
+  -webkit-transform: rotate(0) scale(0,0);
 }
 /*.full-size
 {
@@ -513,6 +528,7 @@ body
   100%
   {
     transform: rotate(720deg) scale(1.0, 1.0);
+    -webkit-transform: rotate(720deg) scale(1.0, 1.0);
   }
   /*100%
   {
@@ -532,6 +548,7 @@ body
 #gcs-portfolio .project-panel>.tn-description
 {
   transition: all .5s ease-in-out;
+  -webkit-transition: all .5s ease-in-out;
   position: absolute;
   top: -100%;
   background: rgba(0,0,0,.6);
@@ -557,6 +574,8 @@ body
 {
   transition: all .5s ease-in-out;
   transform-origin: center;
+  -webkit-transition: all .5s ease-in-out;
+  -webkit-transform-origin: center;
   width: 100%;
   max-height: 100%;
 }
@@ -564,12 +583,13 @@ body
 #gcs-portfolio .project-panel:hover>img
 {
   transform: scale(1.2, 1.2);
+  -webkit-transform: scale(1.2, 1.2);
   /*z-index: 2;*/
 }
 
 #gcs-team
 {
-  min-height: 90vh;
+  /*min-height: 90vh;*/
   /*background-image: url('../img/PS_2.png');*/
   /*background: #D1D1D1;*/
   background: rgba(0,0,0,.6);
@@ -593,6 +613,7 @@ body
 .no-size
 {
   transform: scale(0, 0);
+  -webkit-transform: scale(0, 0);
 }
 
 #gcs-team .row
@@ -608,9 +629,12 @@ body
 {
   transition-property: border;
   transition-duration: .5s;
+  -webkit-transition-property: border;
+  -webkit-transition-duration: .5s;
   border-bottom: 2px solid #BCBCBC;
   padding-bottom: 3px;
   display: inline-flex;
+  display: -webkit-inline-flex;
 }
 #gcs-team .team-panel:hover h5
 {
@@ -620,6 +644,8 @@ body
 {
   transition-property: border;
   transition-duration: .5s;
+  -webkit-transition-property: border;
+  -webkit-transition-duration: .5s;
   border: 5px solid #BCBCBC;
   border-radius: 50%;
   display: block;
@@ -642,6 +668,7 @@ body
 #gcs-team .team-panel>.tp-description
 {
   transition: max-height .4s ease-in-out;
+  -webkit-transition: max-height .4s ease-in-out;
   max-height: 0;
   /*max-height: 1%;*/
   overflow: hidden;
@@ -667,6 +694,7 @@ body
 #gcs-team .team-panel>.tp-description>.tp-description-header a>img
 {
   transition: background .3s;
+  -webkit-transition: background .3s;
   border-radius: 50%;
   width: 24px;
   height: auto;
@@ -685,6 +713,7 @@ body
 #gcs-team .modal .modal-header>.modal-header-social-links>span>a>img
 {
   transition: background .3s;
+  -webkit-transition: background .3s;
   border-radius: 50%;
   height: 34px;
 }
@@ -698,6 +727,9 @@ body
   animation-name: grow;
   animation-duration: .6s;
   animation-timing-function: cubic-bezier(.65, 1.95, .03, .32);
+  -webkit-animation-name: grow;
+  -webkit-animation-duration: .6s;
+  -webkit-animation-timing-function: cubic-bezier(.65, 1.95, .03, .32);
 }
 
 @keyframes grow
@@ -705,6 +737,7 @@ body
   100%
   {
     transform: scale(1.0, 1.0);
+    -webkit-transform: scale(1.0, 1.0);
   }
 }
 
@@ -759,6 +792,7 @@ body
   border-bottom: 2px solid black;
   padding-bottom: 1vh;
   display: inline-flex;
+  display: -webkit-inline-flex;
 }
 
 #gcs-clients p
