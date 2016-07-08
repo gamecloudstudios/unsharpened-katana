@@ -170,7 +170,7 @@ function checkScroll(window)
   {
     for (var i = 0, length = fadein_elems.length; i < length; i++)
     {
-      if (!fadein_elems[i].visible && window_bottom > fadein_elems[i].dims.pos + ($(fadein_elems[i]).hasClass('fadein-early') ? fadein_elems[i].dims.height / 2 : fadein_elems[i].dims.height))
+      if (!fadein_elems[i].visible && window_bottom > fadein_elems[i].dims.pos + ($(fadein_elems[i]).hasClass('fadein-early') ? fadein_elems[i].dims.height / 4 : fadein_elems[i].dims.height))
       {
         fadein_elems[i].visible = true;
         fadeInDirection($(fadein_elems[i]));
@@ -322,7 +322,7 @@ var determineBackground = function(scroll_pos)
     $('#gcs-backgrounds').css(
       {
         transform: 'translateY(-' + (100 * bg_arr_index) + 'vh)',
-        '-webkit-transform': 'translateY(-' + (100 * bg_arr_index) + 'vh)'
+        '-webkit-transform': 'translateY(-' + (100 * bg_arr_index * (1.0 / bg_arr.length)) + '%)'
       }
     );
   }

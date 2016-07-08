@@ -228,8 +228,10 @@ body
   transition: height 0.5s ease-in-out;
   -webkit-transition: height 0.5s ease-in-out;
   position: relative;
-  padding-top: 10vh;
-  padding-bottom: 10vh;
+  /*padding-top: 10vh;
+  padding-bottom: 10vh;*/
+  padding-top: 6em;
+  padding-bottom: 6em;
   /*top: 90px;*/
 }
 /*body *:hover .gcs-bottom-section
@@ -240,8 +242,10 @@ body
 .section-headline
 {
   border-bottom: 2px solid;
-  padding-bottom: 1vh;
-  margin-bottom: 5vh;
+  /*padding-bottom: 1vh;*/
+  padding-bottom: 0.4em;
+  /*margin-bottom: 5vh;*/
+  margin-bottom: 1.4em;
   display: inline-flex;
   display: -webkit-inline-flex;
 }
@@ -345,7 +349,7 @@ body
 #gcs-splash
 {
   /*min-height: 100vh;*/
-  min-height: 61em;
+  min-height: 64em;
   width: 100vw;
   background: rgba(0,0,0,.5);
 }
@@ -430,7 +434,8 @@ body
 
 #gcs-services
 {
-  min-height: 100vh;
+  /*min-height: 100vh;*/
+  min-height: 64em;
   /*background-image: url('../img/PS_2.png');*/
   /*background-color: #FDAF0F;*/
   /*background: rgba(251,156,2, 1);*/
@@ -778,7 +783,8 @@ body
 
 #gcs-clients
 {
-  min-height: 50vh;
+  /*min-height: 50vh;*/
+  min-height: 32em;
   background: rgba(216,212,213,1);
   padding-bottom: 18vh;
 }
