@@ -17,7 +17,7 @@ var bg_arr_index = 0;
 
 var windowHeight;
 var windowWidth;
-var services_pos, services_height;
+// var services_pos, services_height;
 var about_pos, team_pos;
 var project_divs = [];
 var team_divs = [];
@@ -27,7 +27,7 @@ var splash_opacity = 1.0;
 
 var team_members_visible = false;
 var projects_visible = false;
-var services_visible = false;
+// var services_visible = false;
 // var bgs_initialized = false;
 // var bgs = [];
 
@@ -48,8 +48,8 @@ var measureElements = function(the_window)
   // debugPrint(windowHeight);
   // centerBGs(the_window, bgs);
 
-  services_pos = $('#gcs-services').offset().top;
-  services_height = $('#gcs-services').height();
+  // services_pos = $('#gcs-services').offset().top;
+  // services_height = $('#gcs-services').height();
 
   about_pos = $('#gcs-about').offset().top;
   team_pos = $('#gcs-team').offset().top;
@@ -223,12 +223,12 @@ function checkScroll(window)
   else
     debugPrint("All team members visible!");
 
-  if (!services_visible && (window_bottom > services_pos + (services_height >> 2)))
-  {
-    // debugPrint("FADE IN!");
-    services_visible = true;
-    fadeInServices();
-  }
+  // if (!services_visible && (window_bottom > services_pos + (services_height >> 2)))
+  // {
+  //   // debugPrint("FADE IN!");
+  //   services_visible = true;
+  //   fadeInServices();
+  // }
   // else
   //   debugPrint("All services visible!");
 
