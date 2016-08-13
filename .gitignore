@@ -43,6 +43,8 @@ app/*.map
 
 # other generated files
 typings
+app/*.component.js
+app/*.js.map
 app/*/*.component.js
 app/*/*.service.js
 app/*/*.js.map
