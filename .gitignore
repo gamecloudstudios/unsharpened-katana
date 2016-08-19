@@ -45,6 +45,7 @@ app/*.map
 typings
 app/*.component.js
 app/*.js.map
-app/*/*.component.js
-app/*/*.service.js
-app/*/*.js.map
+app/components/*/*.js
+app/components/*/*.js.map
+app/services/*/*.svc.js
+app/services/*/*.svc.js.map

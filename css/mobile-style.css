@@ -1,0 +1,8 @@
+/* iPhone 6 PORTRAIT */
+@media screen and (max-width: 768px)
+{
+  #gcs-portfolio .project-panel>.tn-description>p
+  {
+    font-size: 3vw;
+  }
+}
