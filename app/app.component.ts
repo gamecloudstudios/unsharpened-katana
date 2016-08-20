@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Backgrounds } from './components/backgrounds/backgrounds';
+import { GCS_Backgrounds } from './components/backgrounds/backgrounds';
+import { GCS_Splash } from './components/splash/splash';
+import { GCS_Services } from './components/services/services';
+
 @Component({
   selector: 'my-app',
-  directives: [Backgrounds],
+  directives: [GCS_Backgrounds, GCS_Splash, GCS_Services],
   templateUrl: 'app/app.component.html' 
 })
 export class AppComponent implements OnInit 
@@ -32,58 +35,58 @@ export class AppComponent implements OnInit
 
   measureElements(the_window)
   {
-    this.windowHeight = $(the_window).height();
-    this.windowWidth = $(the_window).width();
+    // this.windowHeight = $(the_window).height();
+    // this.windowWidth = $(the_window).width();
 
-    // Center the BG images
-    // if (!bgs_initialized)
-    // var bgs = $('#gcs-backgrounds>.img-container').children('img');
-    // debugPrint(windowWidth);
-    // debugPrint(windowHeight);
-    // centerBGs(the_window, bgs);
+    // // Center the BG images
+    // // if (!bgs_initialized)
+    // // var bgs = $('#gcs-backgrounds>.img-container').children('img');
+    // // debugPrint(windowWidth);
+    // // debugPrint(windowHeight);
+    // // centerBGs(the_window, bgs);
 
-    this.services_pos = $('#gcs-services').offset().top;
-    this.services_height = $('#gcs-services').height();
+    // this.services_pos = $('#gcs-services').offset().top;
+    // this.services_height = $('#gcs-services').height();
 
-    this.about_pos = $('#gcs-about').offset().top;
-    this.team_pos = $('#gcs-team').offset().top;
+    // this.about_pos = $('#gcs-about').offset().top;
+    // this.team_pos = $('#gcs-team').offset().top;
 
-    this.fadein_elems = jQuery.merge($('.fadeout-left'), $('.fadeout-right'));
-    this.fadein_elems = jQuery.merge(this.fadein_elems, $('.fadeout-up'));
-    this.fadein_elems = jQuery.merge(this.fadein_elems, $('.fadeout-down'));
-    debugPrint(fadein_elems);
-    for (var i = 0, length = this.fadein_elems.length; i < length; i++)
-    {
-      this.fadein_elems[i].dims = {
-        pos: $(this.fadein_elems[i]).offset().top,
-        height: $(this.fadein_elems[i]).height(),
-      }
-      this.fadein_elems[i].visible = false;
-    }
-
-    // project_divs = $('#gcs-portfolio>.container-fluid>.row>div');
-    // for (var i = 0; i < project_divs.length; i++)
+    // this.fadein_elems = jQuery.merge($('.fadeout-left'), $('.fadeout-right'));
+    // this.fadein_elems = jQuery.merge(this.fadein_elems, $('.fadeout-up'));
+    // this.fadein_elems = jQuery.merge(this.fadein_elems, $('.fadeout-down'));
+    // debugPrint(fadein_elems);
+    // for (var i = 0, length = this.fadein_elems.length; i < length; i++)
     // {
-    //   project_divs[i].dims = {
-    //     pos: $(project_divs[i]).offset().top,
-    //     height:  $(project_divs[i]).height(),
-    //   };
-    //   project_divs[i].visible = false;
+    //   this.fadein_elems[i].dims = {
+    //     pos: $(this.fadein_elems[i]).offset().top,
+    //     height: $(this.fadein_elems[i]).height(),
+    //   }
+    //   this.fadein_elems[i].visible = false;
     // }
 
-    this.team_divs = $('#gcs-team>.container>.row>div');
-    for (var i = 0; i < this.team_divs.length; i++)
-    {
-      this.team_divs[i].dims = {
-        pos: $(this.team_divs[i]).offset().top,
-        height:  $(this.team_divs[i]).height(),
-      };
-      this.team_divs[i].visible = false;
-    }
+    // // project_divs = $('#gcs-portfolio>.container-fluid>.row>div');
+    // // for (var i = 0; i < project_divs.length; i++)
+    // // {
+    // //   project_divs[i].dims = {
+    // //     pos: $(project_divs[i]).offset().top,
+    // //     height:  $(project_divs[i]).height(),
+    // //   };
+    // //   project_divs[i].visible = false;
+    // // }
 
-    // debugPrint("windowHeight" + windowHeight);
-    // debugPrint("services_pos" + services_pos);
-    // debugPrint("services_height" + services_height);
-    determineBackground(this.windowHeight + $(window).scrollTop());
+    // this.team_divs = $('#gcs-team>.container>.row>div');
+    // for (var i = 0; i < this.team_divs.length; i++)
+    // {
+    //   this.team_divs[i].dims = {
+    //     pos: $(this.team_divs[i]).offset().top,
+    //     height:  $(this.team_divs[i]).height(),
+    //   };
+    //   this.team_divs[i].visible = false;
+    // }
+
+    // // debugPrint("windowHeight" + windowHeight);
+    // // debugPrint("services_pos" + services_pos);
+    // // debugPrint("services_height" + services_height);
+    // determineBackground(this.windowHeight + $(window).scrollTop());
   }
 }

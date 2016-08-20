@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+
 @Component({
   selector: 'gcs-backgrounds',
   templateUrl: './app/components/backgrounds/backgrounds.html'
 })
-export class Backgrounds 
+export class GCS_Backgrounds 
 { 
   public bgs: Background[] = BACKGROUNDS;
 }
@@ -24,4 +25,4 @@ const BACKGROUNDS: Background[] = [
   {
     src: '../../img/pexels-office.jpg'
   }
-]
+];
