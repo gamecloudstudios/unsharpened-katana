@@ -1,0 +1,22 @@
+<div class="modal fade" id="bio-{{team_member.first_name}}-{{team_member.last_name}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-uppercase" id="myModalLabel">{{team_member.first_name}} {{team_member.last_name}} - {{team_member.title}}</h4>
+        <div class="modal-header-social-links">
+          <span><a href="{{team_member.linkedin_url}}" target="_blank"><img src="img/linkedin-128.png" alt=""></a></span>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p *ngFor="let paragraph of team_member.bio.description">{{paragraph}}</p>
+        <ul *ngIf="team_member.bio.credits.length > 0"><h6 class="text-uppercase">Prior Credits</h6>
+          <li *ngFor="let credit of team_member.bio.credits">{{credit}}</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

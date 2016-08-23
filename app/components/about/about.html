@@ -1,0 +1,9 @@
+<!--<section id="gcs-about" class="gcs-bottom-section">-->
+  <div class="container">
+    <div *ngFor="let headline of headlines; let o = odd; let e = even" class="row">
+      <div class="fadein-early col-xs-12 text-center" [class.fadeout-left]="e" [class.fadeout-right]="o">
+        <h2>{{headline}}</h2>
+      </div>
+    </div>
+  </div>
+<!--</section>-->

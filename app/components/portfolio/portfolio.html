@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div class="row">
+    <h3 class="text-center text-uppercase section-headline fadeout-right">Our Portfolio:</h3>
+  </div> <!--row-->
+  <div class="row">
+    <div *ngFor="let project of projects" class="col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-6 col-md-4">
+      <div class="project-panel fadeout-left">
+      <!-- <div class="project-panel tiny-size"> -->
+        <img src="{{project.img_src}}" alt="">
+        <div class="tn-description">
+          <h5>{{project.title}}</h5>
+          <p *ngIf="project.platform">({{project.platform}})</p>
+          <p>{{project.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
