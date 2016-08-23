@@ -5,10 +5,11 @@ import { GCS_Services } from './components/services/services';
 import { GCS_About } from './components/about/about';
 import { GCS_Portfolio } from './components/portfolio/portfolio';
 import { GCS_Team } from './components/team/team';
+import { GCS_ContactUs } from './components/contact-us/contact-us';
 
 @Component({
   selector: 'my-app',
-  directives: [GCS_Backgrounds, GCS_Splash, GCS_Services, GCS_About, GCS_Portfolio, GCS_Team],
+  directives: [GCS_Backgrounds, GCS_Splash, GCS_Services, GCS_About, GCS_Portfolio, GCS_Team, GCS_ContactUs],
   templateUrl: 'app/app.component.html' 
 })
 export class AppComponent implements OnInit 

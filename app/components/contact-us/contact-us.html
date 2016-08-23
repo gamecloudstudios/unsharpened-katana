@@ -1,0 +1,35 @@
+<!--<footer class="full-width foot gcs-bottom-section" id="contact-us">-->
+  <div class="container">
+    <!--<div class="row">-->
+      <div class="row">
+        <div col-xs-12>
+          <h3 class="text-center text-uppercase section-headline fadeout-up">Contact Us</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div *ngFor="let entry of my_contacts" class="fadeout-left fadein-early col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-5 col-md-offset-0 col-md-4">
+          <h4 *ngIf="entry.location != null">{{entry.location}}</h4>
+          <p *ngFor="let contact of entry.contacts">{{contact.label}}: <a [href]="contact.contact_link">{{contact.contact_string}}</a></p>
+          <p *ngFor="let line of entry.address">{{line}}</p>
+        </div>
+        <!--<div class="fadeout-left fadein-early col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-5 col-md-offset-0 col-md-4">
+          <h4>Murrieta, CA</h4>
+          <p>Clark Seydel: <a href="tel:+1-202-360-5015">+1-202-360-5015</a></p>
+          <p>25026 Las Brisas Rd, Ste A</p>
+          <p>Murrieta, CA 92562</p>
+        </div>
+        <div class="fadeout-down fadein-early col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-5 col-md-offset-0 col-md-4">
+          <h4>Shanghai, China</h4>
+          <p>Phone: <a href="tel:+86-21-5131-4277">+86-21-5131-4277</a></p>
+          <p>Fax: <a href="fax-global-phone:+86-21-5131-4278">+86-21-5131-4278</a></p>
+          <p>1st Floor Building 17, No. 498</p>
+          <p>Guoshoujing Road, 201203</p>
+        </div>
+        <div class="fadeout-right col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-5 col-md-offset-0 col-md-4">
+          <h3></h3>
+          <p>Email: <a href="mailto:info@gamecloudstudios.com" target="_blank">info@gamecloudstudios.com</a></p>
+        </div>-->
+      </div>
+    <!--</div>-->
+  </div>
+<!--</footer>-->
