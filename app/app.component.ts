@@ -126,12 +126,12 @@ export class AppComponent implements OnInit
     windowScrollTop > this.windowHeight * .75 ? $('.navbar').addClass('shrunken-navbar') : $('.navbar').removeClass('shrunken-navbar');
 
     // Fading away the contents in the splash section
-    splash_opacity = (windowHeight - windowScrollTop) / windowHeight;
+    this.splash_opacity = (this.windowHeight - windowScrollTop) / this.windowHeight;
     // debugPrint('splash_opacity = ' + splash_opacity);
-    if (splash_opacity >= 0)
+    if (this.splash_opacity >= 0)
     {
       $('#gcs-splash>.container').show();
-      $('#gcs-splash>.container').fadeTo(1, splash_opacity,"linear");
+      $('#gcs-splash>.container').fadeTo(1, this.splash_opacity,"linear");
     }
     else
     {
@@ -140,12 +140,12 @@ export class AppComponent implements OnInit
 
     if (true)
     {
-      for (var i = 0, length = fadein_elems.length; i < length; i++)
+      for (var i = 0, length = this.fadein_elems.length; i < length; i++)
       {
-        if (!fadein_elems[i].visible && window_bottom > fadein_elems[i].dims.pos + ($(fadein_elems[i]).hasClass('fadein-early') ? fadein_elems[i].dims.height / 4 : fadein_elems[i].dims.height))
+        if (!this.fadein_elems[i].visible && window_bottom > this.fadein_elems[i].dims.pos + ($(this.fadein_elems[i]).hasClass('fadein-early') ? this.fadein_elems[i].dims.height / 4 : this.fadein_elems[i].dims.height))
         {
-          fadein_elems[i].visible = true;
-          fadeInDirection($(fadein_elems[i]));
+          this.fadein_elems[i].visible = true;
+          fadeInDirection($(this.fadein_elems[i]));
         }
       }
     }
@@ -172,33 +172,33 @@ export class AppComponent implements OnInit
     //   debugPrint("All projects visible!");
 
 
-    if (!team_members_visible)
+    if (!this.team_members_visible)
     {
-      for (var i = 0; i < team_divs.length; i++)
+      for (var i = 0; i < this.team_divs.length; i++)
       {
         // debugPrint(`team_divs[${i}].visible = ${team_divs[i].visible}`);
-        if (!team_divs[i].visible && window_bottom > team_divs[i].dims.pos + team_divs[i].dims.height)
+        if (!this.team_divs[i].visible && window_bottom > this.team_divs[i].dims.pos + this.team_divs[i].dims.height)
         {
-          team_divs[i].visible = true;
-          growElement($(team_divs[i]).children('.team-panel'));
+          this.team_divs[i].visible = true;
+          growElement($(this.team_divs[i]).children('.team-panel'));
         }
       }
       var team_visible_arr = [];
-      team_visible_arr = team_divs.filter(function()
+      team_visible_arr = this.team_divs.filter(function()
       {
         return this.visible;
       });
-      debugPrint('team_visible_arr.length=' + (team_visible_arr.length) + ', team_divs.length=' + (team_divs.length));
-      team_members_visible = team_divs.length > 0 && team_visible_arr.length == team_divs.length;
+      debugPrint('team_visible_arr.length=' + (team_visible_arr.length) + ', team_divs.length=' + (this.team_divs.length));
+      this.team_members_visible = this.team_divs.length > 0 && team_visible_arr.length == this.team_divs.length;
       // debugPrint("visible array: " + visible_arr);
     }
     else
       debugPrint("All team members visible!");
 
-    if (!services_visible && (window_bottom > services_pos + (services_height >> 2)))
+    if (!this.services_visible && (window_bottom > this.services_pos + (services_height >> 2)))
     {
       // debugPrint("FADE IN!");
-      services_visible = true;
+      this.services_visible = true;
       fadeInServices();
     }
     // else
