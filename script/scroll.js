@@ -31,6 +31,11 @@ var services_visible = false;
 // var bgs_initialized = false;
 // var bgs = [];
 
+function NodeListToArray(list)
+{
+  return Array.prototype.slice.call(list);
+}
+
 /**
  * measureElements
  * Measures the dimensions of numerous elements on the page
@@ -38,8 +43,8 @@ var services_visible = false;
  */
 var measureElements = function(the_window)
 {
-  windowHeight = $(the_window).height();
-  windowWidth = $(the_window).width();
+  windowHeight = the_window.innerHeight;
+  windowWidth = the_window.innerWidth;
 
   // Center the BG images
   // if (!bgs_initialized)
@@ -48,49 +53,53 @@ var measureElements = function(the_window)
   // debugPrint(windowHeight);
   // centerBGs(the_window, bgs);
 
-  services_pos = $('#gcs-services').offset().top;
-  services_height = $('#gcs-services').height();
+  let services_div = document.getElementById('gcs-services');
+  services_pos = services_div.offsetTop; //$('#gcs-services').offset().top;
+  services_height = services_div.offsetHeight; //$('#gcs-services').height();
 
-  about_pos = $('#gcs-about').offset().top;
-  team_pos = $('#gcs-team').offset().top;
+  let about_div = document.getElementById('gcs-about');
+  about_pos = about_div.offsetTop; //$('#gcs-about').offset().top;
+  team_pos = about_div.offsetHeight; //$('#gcs-team').offset().top;
 
-  fadein_elems = jQuery.merge($('.fadeout-left'), $('.fadeout-right'));
-  fadein_elems = jQuery.merge(fadein_elems, $('.fadeout-up'));
-  fadein_elems = jQuery.merge(fadein_elems, $('.fadeout-down'));
-  debugPrint(fadein_elems);
+  fadein_elems = NodeListToArray(document.getElementsByClassName('fadeout-left'));
+  fadein_elems = fadein_elems.concat(NodeListToArray(document.getElementsByClassName('fadeout-right'))); //jQuery.merge($('.fadeout-left'), $('.fadeout-right'));
+  fadein_elems = fadein_elems.concat(NodeListToArray(document.getElementsByClassName('fadeout-up')));// this.fadein_elems = jQuery.merge(this.fadein_elems, $('.fadeout-up'));
+  fadein_elems = fadein_elems.concat(NodeListToArray(document.getElementsByClassName('fadeout-down')));// this.fadein_elems = jQuery.merge(this.fadein_elems, $('.fadeout-down'));
+  // debugPrint(fadein_elems);
   for (var i = 0, length = fadein_elems.length; i < length; i++)
   {
     fadein_elems[i].dims = {
-      pos: $(fadein_elems[i]).offset().top,
-      height: $(fadein_elems[i]).height(),
+      pos: fadein_elems[i].offsetTop,
+      height: fadein_elems[i].offsetHeight,
     }
     fadein_elems[i].visible = false;
   }
 
-  // project_divs = $('#gcs-portfolio>.container-fluid>.row>div');
-  // for (var i = 0; i < project_divs.length; i++)
-  // {
-  //   project_divs[i].dims = {
-  //     pos: $(project_divs[i]).offset().top,
-  //     height:  $(project_divs[i]).height(),
-  //   };
-  //   project_divs[i].visible = false;
-  // }
+  // // project_divs = $('#gcs-portfolio>.container-fluid>.row>div');
+  // // for (var i = 0; i < project_divs.length; i++)
+  // // {
+  // //   project_divs[i].dims = {
+  // //     pos: $(project_divs[i]).offset().top,
+  // //     height:  $(project_divs[i]).height(),
+  // //   };
+  // //   project_divs[i].visible = false;
+  // // }
 
-  team_divs = $('#gcs-team>.container>.row>div');
+  team_divs = NodeListToArray(document.querySelectorAll('#gcs-team>.container>.row>div')); //$('#gcs-team>.container>.row>div');
   for (var i = 0; i < team_divs.length; i++)
   {
     team_divs[i].dims = {
-      pos: $(team_divs[i]).offset().top,
-      height:  $(team_divs[i]).height(),
+      pos: team_divs[i].offsetTop,
+      height: team_divs[i].offsetHeight,
     };
     team_divs[i].visible = false;
   }
 
-  // debugPrint("windowHeight" + windowHeight);
-  // debugPrint("services_pos" + services_pos);
-  // debugPrint("services_height" + services_height);
-  determineBackground(windowHeight + $(window).scrollTop());
+  // // debugPrint("windowHeight" + windowHeight);
+  // // debugPrint("services_pos" + services_pos);
+  // // debugPrint("services_height" + services_height);
+  // determineBackground(this.windowHeight + $(window).scrollTop());
+  determineBackground(windowHeight + window.pageYOffset);
 }
 
 $(window).resize(function()
