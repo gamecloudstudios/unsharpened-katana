@@ -2,7 +2,7 @@ var gamp = function(event_label)
 {
   $.ajax({
     method: 'POST',
-    url: 'www.google-analytics.com/collect',
+    url: 'https://www.google-analytics.com/collect',
     data: {
       v: '1',
       tid: 'UA-86681201-1',
