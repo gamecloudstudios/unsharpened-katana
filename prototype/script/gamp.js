@@ -1,5 +1,6 @@
 var gamp = function(event_label)
 {
+  ga('send', 'event', 'Menu', 'navigate', event_label);
   $.ajax({
     method: 'POST',
     url: 'https://www.google-analytics.com/collect',
