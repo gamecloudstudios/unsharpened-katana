@@ -8,6 +8,17 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/mobile-style.css">
   <link rel="stylesheet" href="css/animations.css" media="screen" title="no title" charset="utf-8">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    //ga('create', 'UA-86681201-1', 'auto');
+    ga('create', 'UA-86681201-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
 </head>
 
 <body data-spy="scroll" data-target="#gcs-navbar" data-offset="90">
@@ -16,17 +27,16 @@
 
     </div>
   </div>
-  <div id="debug-info" style="display: block;">
-    <!--<h4 class="text-center">DEBUG INFO</h4>-->
-  </div>
+  <!--<div id="debug-info" style="display: block;">
+  </div>-->
   <div id="header">
     <!--<nav class="navbar navbar-inverse navbar-fixed-top standard-navbar" id="gcs-navbar">-->
     <nav class="navbar navbar-inverse navbar-fixed-top original-navbar" id="gcs-navbar">
-      <div id="debug-toggle">
+      <!--<div id="debug-toggle">
         <button type="button" class="btn btn-info">
           TOGGLE DEBUG
         </button>
-      </div>
+      </div>-->
       <div class="container" id="header-container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -43,14 +53,14 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <div class="row">
             <ul class="nav navbar-right navbar-nav col-sm-offset-6 text-uppercase">
-              <li class="active"><a href="#header">Home<span class="sr-only">(current)</span></a></li>
-              <li><a href="#gcs-services">Services</a></li>
+              <li class="active"><a href="#header" onclick="gamp('Home')">Home<span class="sr-only">(current)</span></a></li>
+              <li><a href="#gcs-services" onclick="gamp('Services')">Services</a></li>
               <!--<li><a href="#gcs-about">About</a></li>-->
-              <li><a href="#gcs-portfolio">Portfolio</a></li>
-              <li><a href="#gcs-team">Team</a></li>
-              <li><a href="#contact-us">Contact Us</a></li>
+              <li><a href="#gcs-portfolio" onclick="gamp('Portfolio')">Portfolio</a></li>
+              <li><a href="#gcs-team" onclick="gamp('Team')">Team</a></li>
+              <li><a href="#contact-us" onclick="gamp('Contact Us')">Contact Us</a></li>
               <!--<li><a href="#jobs">Jobs</a></li>-->
-              <li><button class="btn btn-link text-uppercase"><a href="./jobs">jobs</a></button></li>
+              <li><button class="btn btn-link text-uppercase" onclick="gamp('Jobs')"><a href="./jobs">jobs</a></button></li>
             </ul>
           </div> <!-- row -->
         </div><!-- /.navbar-collapse -->
@@ -60,23 +70,23 @@
 
   <div class="full-width" id="gcs-backgrounds">
     <div class="img-container">
-      <img src="img/SHOWSTOPPER PAGE_v1.jpg">
+      <img src="img/pexels-gcs.jpg">
     </div>
     <div class="img-container">
-      <img src="img/PS_4.jpg">
+      <img src="img/pexels-team.jpg">
     </div>
     <div class="img-container">
-      <img src="img/GC CLOUD HEADER_v1.jpg">
+      <img src="img/pexels-office.jpg">
     </div>
   </div>
   <!-- <div id="bottom"> -->
     <div id="gcs-splash" class="gcs-bottom-section">
-      <!--<div class="container">
+      <div class="container">
         <div class="headlines text-center">
-          <h3>Defining the Next Level</h3>
-          <h1 class="text-uppercase">We are GameCloud</h1>
+          <!--<h3>Defining the Next Level</h3>-->
+          <h1 class="text-uppercase">We live with passion.</h1>
         </div>
-        <div class="row" id="splash-bullets">
+        <!--<div class="row" id="splash-bullets">
           <div class="col-xs-12 col-sm-4">
             <div class="text-center text-uppercase">
               <h5>Development</h5>
@@ -92,14 +102,14 @@
               <h5>Development</h5>
             </div>
           </div>
-        </div>
-      </div>-->
+        </div>-->
+      </div>
     </div>
 
     <section id="gcs-services" class="gcs-bottom-section">
       <!--<div class="container-fluid">-->
         <div class="row">
-          <h3 class="text-center text-uppercase section-headline fadeout-left">We provide:</h3>
+          <h3 class="text-center text-uppercase section-headline">We provide:</h3>
         </div>
         <div class="row">
           <div class="col-xs-10 col-xs-offset-1 col-md-offset-0 col-md-4">
@@ -111,7 +121,7 @@
                 <h3 class="text-center">Strategy</h3>
                 <div class="caption-text" id="caption-text-0">
                   <p>
-                    Our team sees a lot of value in well thought out strategy. We choose to thoroughly interview respective partners so we are fully prepared for design and development. Going beyond the coding process our team creates a user acquisition and monetization strategy that will assure your time in tech & design does not go wasted.
+                    A well designed strategy arms us with everything we need to begin the design and development of a project. GameCloud applies 50 plus years of combined experience to tailor a code to market strategy that will enable us to reach the desired results.
                   </p>
                 </div>
               </div>
@@ -126,7 +136,7 @@
                 <h3 class="text-center">Tech</h3>
                 <div class="caption-text" id="caption-text-0">
                   <p>
-                    Through code GameCloud brings your ideas and visions to life. Our team of engineers has a keen understanding of the latest web and mobile platforms including Native iOS, Native Android, UNITY. We are are able to seamlessly handle highly scalable services, API development and integrations as well as Multi-Lingual.
+                    Our team of committed engineers specialize in all the major web and mobile platforms. We love working side by side with our clients internal technology teams when the opportunity is there.
                   </p>
                 </div>
               </div>
@@ -849,6 +859,7 @@
   <script src="script/bg_utils.js"></script>
   <script src="script/scroll.js"></script>
   <script src="script/carousel.js"></script>
+  <script src="script/gamp.js"></script>
 </body>
 
 </html>
